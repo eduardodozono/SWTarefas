@@ -1,0 +1,41 @@
+﻿@using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
+@model TarefaViewModel
+
+@{
+	ViewData["Title"] = "Nova Tarefa";
+}
+
+<h4>Nova Tarefa</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Titulo" class="control-label"></label>
+				<input asp-for="Titulo" class="form-control" />
+				<span asp-validation-for="Titulo" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Descricao" class="control-label"></label>
+				<textarea asp-for="Descricao"  class="form-control" style="height: 80px;"></textarea>
+				<span asp-validation-for="Descricao" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="DataConclusaoPrevista" class="control-label"></label>
+				<input type="date" asp-for="DataConclusaoPrevista" class="form-control" />
+				<span asp-validation-for="DataConclusaoPrevista" class="text-danger"></span>
+			</div>
+			<div class="form-group" style="margin-top: 5px;">
+				<input type="submit" value="Salvar" class="btn btn-success btn-sm" />
+				<a asp-action="Index" class="btn btn-secondary btn-sm">Voltar</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

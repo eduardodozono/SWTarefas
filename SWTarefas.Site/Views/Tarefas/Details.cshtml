@@ -1,0 +1,50 @@
+﻿@using EnumsNET;
+@using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
+@using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
+@model TarefaViewModel
+
+@{
+	ViewData["Title"] = "Detalhes da Tarefa";
+}
+
+<h4>Detalhes da Tarefa</h4>
+
+<div>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Titulo)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Titulo)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Descricao)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Descricao)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DataConclusaoPrevista)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DataConclusaoPrevista)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DataConclusaoRealizada)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DataConclusaoRealizada)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Status)
+		</dt>
+		<dd class="col-sm-10">
+			@((StatusEnum.TarefaStatus)Model.Status)
+		</dd>
+	</dl>
+</div>
+<div>
+	<a asp-action="Edit" asp-route-id="@Model?.TarefaId" class="btn btn-primary btn-sm">Editar</a>
+	<a asp-action="Index" class="btn btn-secondary btn-sm">Voltar</a>
+</div>
