@@ -38,8 +38,8 @@ namespace SWTarefas.Site.Extensions
 				                {output.GetChildContentAsync().Result.GetContent()}
 			                </div>
 			                <div class=""modal-footer"">
-				                <button id=""{Id}BtnSimExcluir"" type=""button"" class=""btn btn-success btn-sm"">Sim</button>
-				                <button type=""button"" class=""btn btn-secondary btn-sm"" data-bs-dismiss=""modal"" onclick=""FecharModalExclusao()"">Não</button>
+				                <button id=""{Id}BtnSimExcluir"" type=""button"" class=""btn btn-success btn-sm""><i class=""fa-solid fa-check"" style=""margin-right: 5px;""></i>Sim</button>
+				                <button type=""button"" class=""btn btn-secondary btn-sm"" data-bs-dismiss=""modal"" onclick=""FecharModalExclusao()""><i class=""fa-solid fa-xmark"" style=""margin-right: 5px;""></i>Não</button>
 			                </div>
 		                </div>
 	                </div>
