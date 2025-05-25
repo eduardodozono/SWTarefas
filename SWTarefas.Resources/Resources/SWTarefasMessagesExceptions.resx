@@ -130,13 +130,13 @@
     <value>Problema ao converter a tarefa.</value>
   </data>
   <data name="StatusInvalido" xml:space="preserve">
-    <value>Status inválido (1 - Concluída, 2 - Pendente)</value>
+    <value>Status inválido (1 - Concluída, 2 - Pendente).</value>
   </data>
   <data name="StatusVazio" xml:space="preserve">
     <value>O campo status não pode fica vazio.</value>
   </data>
   <data name="TarefaNaoExiste" xml:space="preserve">
-    <value>A tarefa não existe</value>
+    <value>A tarefa não existe.</value>
   </data>
   <data name="TarefaVazia" xml:space="preserve">
     <value>O campo tarefaid não pode fica vazio.</value>

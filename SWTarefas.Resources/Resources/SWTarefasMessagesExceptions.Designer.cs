@@ -97,7 +97,7 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Status inválido (1 - Concluída, 2 - Pendente).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Status inválido (1 - Concluída, 2 - Pendente)..
         /// </summary>
         public static string StatusInvalido {
             get {
@@ -115,7 +115,7 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a A tarefa não existe.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A tarefa não existe..
         /// </summary>
         public static string TarefaNaoExiste {
             get {
