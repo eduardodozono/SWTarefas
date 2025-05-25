@@ -88,6 +88,15 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Erro desconhecido..
+        /// </summary>
+        public static string ErroDesconhecido {
+            get {
+                return ResourceManager.GetString("ErroDesconhecido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Problema ao converter a tarefa..
         /// </summary>
         public static string ProblemaConverterTarefa {

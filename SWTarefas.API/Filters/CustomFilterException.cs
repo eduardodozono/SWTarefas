@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SWTarefas.Application.Exceptions;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.API.Filters
 {
@@ -36,7 +37,7 @@ namespace SWTarefas.API.Filters
         {
             context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
-            context.Result = new ObjectResult("Erro desconhecido");
+            context.Result = new ObjectResult(SWTarefasMessagesExceptions.ErroDesconhecido);
         }
     }
 }
