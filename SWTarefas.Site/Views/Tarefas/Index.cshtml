@@ -11,7 +11,7 @@
 }
 
 <p>
-	<a asp-action="Create" class="btn btn-primary btn-sm" style="background-color: #46068E; border-color: #46068E;">Nova Tarefa</a>
+	<a asp-action="Create" class="btn btn-primary btn-sm" style="background-color: #46068E; border-color: #46068E;"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nova Tarefa</a>
 </p>
 
 <form asp-action="Index" asp-controller="Tarefas" method="get">
@@ -19,7 +19,7 @@
 		<div class="accordion" id="accordionFilters">
 			<div class="accordion-item">
 				<button class="accordion-button btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="true" aria-controls="collapseFilters" style="background-color: white; box-shadow: none; border-color: white; color: black;">
-					Filtros
+					<i class="fa-solid fa-filter" style="margin-right: 5px;"></i>Filtros
 				</button>
 				<div id="collapseFilters" class="accordion-collapse show" data-bs-parent="#accordionFilters">
 					<div class="accordion-body" style="padding: 0rem 1rem 1rem 1rem;">
@@ -112,7 +112,7 @@
 			</div>
 		</div>
 		<div style="margin-top: 5px;">
-			<input type="submit" value="Pesquisar" class="btn btn-success btn-sm" />
+			<button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>Pesquisar</button>
 		</div>
 	</div>
 </form>
@@ -143,8 +143,8 @@
 			<tr>
 				<td style="width: 0px; white-space: nowrap;">
 					<div class="btn-group" role="group">
-						<a asp-action="Edit" asp-route-id="@item.TarefaId" class="btn btn-secondary btn-sm">Editar</a>
-						<a onclick="ExcluirConfirm(@item.TarefaId)" class="btn btn-danger btn-sm">Excluir</a>
+						<a asp-action="Edit" asp-route-id="@item.TarefaId" class="btn btn-secondary btn-sm"><i class="fa-solid fa-pen-to-square" style="margin-right: 5px;"></i>Editar</a>
+						<a onclick="ExcluirConfirm(@item.TarefaId)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" style="margin-right: 5px;"></i>Excluir</a>
 					</div>
 				</td>
 				<td>
@@ -204,7 +204,10 @@
 			searching: false,
 			"columnDefs": [
 				{ "orderable": false, "targets": 0}
-			]
+			],
+			"language": {
+				"emptyTable": "Nenhuma tarefa cadastrada."
+			}
 		});
 	});
 

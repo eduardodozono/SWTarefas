@@ -5,7 +5,7 @@
 	ViewData["Title"] = "Nova Tarefa";
 }
 
-<h4>Nova Tarefa</h4>
+<h4><i class="fa-solid fa-list-check" style="margin-right: 5px;"></i>Nova Tarefa</h4>
 <hr />
 <div class="row">
 	<div class="col-md-4">
@@ -27,8 +27,8 @@
 				<span asp-validation-for="DataConclusaoPrevista" class="text-danger"></span>
 			</div>
 			<div class="form-group" style="margin-top: 5px;">
-				<input type="submit" value="Salvar" class="btn btn-success btn-sm" />
-				<a asp-action="Index" class="btn btn-secondary btn-sm">Voltar</a>
+				<button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-check" style="margin-right: 5px;"></i>Salvar</button>
+				<a asp-action="Index" class="btn btn-secondary btn-sm"><i class="fa-solid fa-rotate-right" style="margin-right: 5px;"></i>Voltar</a>
 			</div>
 		</form>
 	</div>
