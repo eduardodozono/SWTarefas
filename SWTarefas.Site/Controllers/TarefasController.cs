@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.Interfaces;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel;
+using SWTarefas.Resources.Resources;
+using static SWTarefas.Site.Enums.EnumSorting;
 
 namespace SWTarefas.Site.Controllers
 {
@@ -16,18 +18,32 @@ namespace SWTarefas.Site.Controllers
             _writeTarefasUseCaseSite = writeTarefasUseCaseSite;
         }
 
-        public IActionResult Index(int status, string titulo = "", DateOnly? dataPrevista = null, DateOnly? dataRealizada = null
+        public IActionResult Index(int page, int status, string titulo = "", DateOnly? dataPrevista = null, DateOnly? dataRealizada = null
             , int dataPrevistaOrd = 0, int dataRealizadaOrd = 0)
         {
             var listaTarefas = responseTarefasFilterIndex(status, titulo, dataPrevista, dataRealizada, dataPrevistaOrd, dataRealizadaOrd);
 
-            return View(listaTarefas);
-        }
+            var pageNumber = page;
+            var pageSize = 10;
+            var SizeTotal = 0;
 
-        private enum Sorting
-        {
-            Ascend = 1,
-            Descend = 2
+            if (listaTarefas != null)
+                SizeTotal = listaTarefas.Count();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = (int)Math.Ceiling((double)SizeTotal / (double)pageSize);
+            ViewBag.TotalItemCount = SizeTotal;
+            ViewBag.Titulo = titulo;
+            ViewBag.Status = status.ToString();
+            ViewBag.DataPrevistaOrd = dataPrevistaOrd.ToString();
+            ViewBag.DataRealizadaOrd = dataRealizadaOrd.ToString();
+            ViewBag.DataPrevista = string.Format("{0:yyyy-MM-dd}", dataPrevista);
+            ViewBag.DataRealizada = string.Format("{0:yyyy-MM-dd}", dataRealizada);
+
+            if (listaTarefas == null)
+                return View();
+
+            return View(listaTarefas.Skip((pageNumber - 1) * pageSize).Take(pageSize));
         }
 
         private IEnumerable<TarefaViewModel>? responseTarefasFilterIndex(int status, string titulo = "", DateOnly? dataPrevista = null, DateOnly? dataRealizada = null
@@ -123,7 +139,7 @@ namespace SWTarefas.Site.Controllers
 
             if (tarefa.DataConclusaoRealizada != null)
                 if (tarefa.DataConclusaoRealizada < tarefa.DataConclusaoPrevista)
-                    ModelState.AddModelError("DataConclusaoRealizada", "A data de conclusão realizada tem que ser superior ou igual a data de conclusão prevista.");
+                    ModelState.AddModelError("DataConclusaoRealizada", SWTarefasMessagesExceptions.DataConclusaoSuperiorDataPrevista);
 
             if (ModelState.IsValid)
             {

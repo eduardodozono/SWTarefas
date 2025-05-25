@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
 {
@@ -9,7 +10,7 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
         public int TarefaId { get; set; }
 
         [MaxLength(100, ErrorMessage = "O campo {0} tem o máximo de 400 caracteres.")]
-        [Required(ErrorMessage ="O campo {0} é obrigatório.")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Título")]
         public string Titulo { get; set; }
 

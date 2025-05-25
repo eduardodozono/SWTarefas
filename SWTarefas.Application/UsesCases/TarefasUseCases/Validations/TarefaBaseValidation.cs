@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SWTarefas.Resources.Resources;
 using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases.Validations
@@ -7,11 +8,11 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.Validations
     {
         public TarefaBaseValidation()
         {
-            RuleFor(r => r.Titulo).NotEmpty().WithMessage("O campo título não pode fica vazio.");
-            RuleFor(r => r.Titulo).MaximumLength(100).WithMessage("O campo título tem no máximo 100 cacteres.");
-            RuleFor(r => r.Descricao).MaximumLength(400).WithMessage("O campo descrição tem no máximo 400 cacteres.");
-            RuleFor(r => r.Status).NotEmpty().WithMessage("O campo status não pode fica vazio.");
-            RuleFor(r => r.Status).Must(s => Enum.IsDefined(typeof(TarefaStatus), s)).WithMessage("Status inválido (1 - Concluída, 2 - Pendente)");
+            RuleFor(r => r.Titulo).NotEmpty().WithMessage(SWTarefasMessagesExceptions.TituloVazio);
+            RuleFor(r => r.Titulo).MaximumLength(100).WithMessage(SWTarefasMessagesExceptions.TItuloMaximoCaracteres );
+            RuleFor(r => r.Descricao).MaximumLength(400).WithMessage(SWTarefasMessagesExceptions.DescricaoMaximoCaracteres);
+            RuleFor(r => r.Status).NotEmpty().WithMessage(SWTarefasMessagesExceptions.StatusVazio);
+            RuleFor(r => r.Status).Must(s => Enum.IsDefined(typeof(TarefaStatus), s)).WithMessage(SWTarefasMessagesExceptions.StatusInvalido);
         }
     }
 }

@@ -3,9 +3,11 @@
 @using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
 @model IEnumerable<TarefaViewModel>
 @using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum
+@using MvcPagedList.Core;
+@using SWTarefas.Site.Enums;
 
 @{
-	ViewData["Title"] = "Index";
+	ViewData["Title"] = "Listagem de Tarefas";
 }
 
 <p>
@@ -25,22 +27,34 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label class="control-label">Status</label>
-									<select name="status" class="form-control" asp-items="Html.GetEnumSelectList<TarefaStatus>()">
+									<select name="status" class="form-control">
 										<option></option>
+										@{
+											foreach (var item in Html.GetEnumSelectList<TarefaStatus>())
+											{
+												if (item.Value == ViewBag.Status)
+												{
+													<option value="@item.Value" selected>@item.Text</option>
+												}
+												else{
+													<option value="@item.Value">@item.Text</option>
+												}
+											}
+										}
 									</select>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<label class="control-label">Título</label>
-								<input name="titulo" class="form-control" />
+								<input name="titulo" class="form-control" value="@ViewBag.Titulo" />
 							</div>
 							<div class="col-md-6">
 								<label class="control-label">Data Prevista</label>
-								<input type="date" name="dataPrevista" class="form-control" />
+								<input type="date" name="dataPrevista" class="form-control" value="@ViewBag.DataPrevista" />
 							</div>
 							<div class="col-md-6">
 								<label class="control-label">Data Realizada</label>
-								<input type="date" name="dataRealizada" class="form-control" />
+								<input type="date" id="dataRealizada" name="dataRealizada" class="form-control" value="@ViewBag.DataRealizada" />
 							</div>
 							<div class="col">
 								<div class="col-md-16">
@@ -49,8 +63,19 @@
 											<h6 class="card-subtitle mb-2 text-muted">Ordenação - Data Prevista</h6>
 											<select name="dataPrevistaOrd" id="dataPrevistaOrd" class="form-control" onchange="VerificaOrdenacaoPrevista()">
 												<option></option>
-												<option value="1">Ascendente</option>
-												<option value="2">Descendente</option>
+												@{
+													foreach (var item in Html.GetEnumSelectList<EnumSorting.Sorting>())
+													{
+														if (item.Value == ViewBag.DataPrevistaOrd)
+														{
+															<option value="@item.Value" selected>@item.Text</option>
+														}
+														else
+														{
+															<option value="@item.Value">@item.Text</option>
+														}
+													}
+												}
 											</select>
 										</div>
 									</div>
@@ -63,8 +88,19 @@
 											<h6 class="card-subtitle mb-2 text-muted">Ordenação - Data Realizada</h6>
 											<select name="dataRealizadaOrd" id="dataRealizadaOrd" class="form-control" onchange="VerificaOrdenacaoRealizada()">
 												<option></option>
-												<option value="1">Ascendente</option>
-												<option value="2">Descendente</option>
+												@{
+													foreach (var item in Html.GetEnumSelectList<EnumSorting.Sorting>())
+													{
+														if (item.Value == ViewBag.DataRealizadaOrd)
+														{
+															<option value="@item.Value" selected>@item.Text</option>
+														}
+														else
+														{
+															<option value="@item.Value">@item.Text</option>
+														}
+													}
+												}
 											</select>
 										</div>
 									</div>
@@ -130,8 +166,29 @@
 		}
 	</tbody>
 </table>
+
+@PagedList.Pager(actionName: "Index", controllerName: "Tarefas",
+	routeValues: new
+	{
+		titulo = ViewBag.Titulo,
+		status = ViewBag.Status,
+		ViewBag.DataPrevistaOrd,
+		ViewBag.DataRealizadaOrd,
+		ViewBag.DataPrevista,
+		ViewBag.DataRealizada
+	},
+	pagerOptions: new PagerOptions
+	{
+		currentPage = ViewBag.CurrentPage,
+		PageCount = ViewBag.PageSize,
+		TotalItemCount = ViewBag.TotalItemCount,
+		DisplayInfoArea = false,
+		GetStyleSheetFileFromCdn = false
+	})
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <link href="~/datatables.net/datatables.datatables.min.css" rel="stylesheet" />
+<link href="~/css/mvcpagedlist.core.css" rel="stylesheet" />
 
 <bootstrap-modal id="modalExclusao" title="Excluir Registro" url-ajax="/Tarefas/DeleteAjax">
 	<p>Tem certeza que deseja excluir esse registro?</p>

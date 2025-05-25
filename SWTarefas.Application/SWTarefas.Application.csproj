@@ -13,9 +13,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ProjetoSW.Infrastructure\SWTarefas.Infrastructure.csproj" />
+		<ProjectReference Include="..\SWTarefas.Resources\SWTarefas.Resources.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="SWTarefas.Tests"/>
+		<InternalsVisibleTo Include="SWTarefas.Tests" />
 	</ItemGroup>
 </Project>

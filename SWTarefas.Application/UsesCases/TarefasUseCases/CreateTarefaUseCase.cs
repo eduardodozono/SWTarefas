@@ -6,6 +6,7 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.Validations;
 using SWTarefas.Domain.Entities;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.UnitOfWork;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases
 {
@@ -27,7 +28,7 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases
             var tarefaDomain = _mapper.Map<Tarefa>(tarefa);
 
             if (tarefaDomain == null)
-                throw new CustomBadRequestException("Problema ao converter a tarefa.");
+                throw new CustomBadRequestException(SWTarefasMessagesExceptions.ProblemaConverterTarefa);
 
             var validator = new TarefaBaseValidation();
 

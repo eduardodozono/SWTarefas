@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using FluentAssertions;
 using Bogus;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Tests.Tests.TarefasApi.Update
 {
@@ -91,7 +92,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
-            contents.Should().Contain("Status inválido (1 - Concluída, 2 - Pendente)");
+            contents.Should().Contain(SWTarefasMessagesExceptions.StatusInvalido);
         }
 
         [Theory]
@@ -117,7 +118,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
-            contents.Should().Contain("O campo título não pode fica vazio.");
+            contents.Should().Contain(SWTarefasMessagesExceptions.TituloVazio);
         }
 
 
@@ -145,7 +146,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
-            contents.Should().Contain("O campo título tem no máximo 100 cacteres.");
+            contents.Should().Contain(SWTarefasMessagesExceptions.TItuloMaximoCaracteres);
         }
 
 
@@ -173,7 +174,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
-            contents.Should().Contain("O campo descrição tem no máximo 400 cacteres.");
+            contents.Should().Contain(SWTarefasMessagesExceptions.DescricaoMaximoCaracteres);
         }
 
         [Theory]
@@ -200,7 +201,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
-            contents.Should().Contain("A data de conclusão prevista tem que ser inferior ou igual a data de conclusão realizada.");
+            contents.Should().Contain(SWTarefasMessagesExceptions.DataConclusaoInferiorDataPrevista);
         }
     }
 }

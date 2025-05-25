@@ -2,6 +2,7 @@
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.UnitOfWork;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases
 {
@@ -23,7 +24,7 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases
             var tarefaDB = await _tarefaReadRepository.GetById(tarefaId);
 
             if (tarefaDB == null)
-                throw new CustomBadRequestException("Tarefa não cadastrada.");
+                throw new CustomBadRequestException(SWTarefasMessagesExceptions.TarefaNaoExiste);
 
             await _tarefaDeleteRepository.Delete(tarefaId, token);
 
