@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.Interfaces;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Site.Controllers
 {
@@ -123,7 +125,7 @@ namespace SWTarefas.Site.Controllers
 
             if (tarefa.DataConclusaoRealizada != null)
                 if (tarefa.DataConclusaoRealizada < tarefa.DataConclusaoPrevista)
-                    ModelState.AddModelError("DataConclusaoRealizada", "A data de conclusão realizada tem que ser superior ou igual a data de conclusão prevista.");
+                    ModelState.AddModelError("DataConclusaoRealizada", SWTarefasMessagesExceptions.DataConclusaoSuperiorDataPrevista);
 
             if (ModelState.IsValid)
             {

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases.Validations
 {
@@ -12,9 +13,9 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.Validations
         {
             _tarefaReadRepository = tarefaReadRepository;
 
-            RuleFor(r => r.TarefaId).NotEmpty().WithMessage("O campo tarefaid não pode fica vazio.");
-            RuleFor(r => r.TarefaId).MustAsync(ExisteTarefaId).WithMessage("A tarefa não existe");
-            RuleFor(r => r.DataConclusaoPrevista).LessThanOrEqualTo(x => x.DataConclusaoRealizada ).WithMessage("A data de conclusão prevista tem que ser inferior ou igual a data de conclusão realizada.");
+            RuleFor(r => r.TarefaId).NotEmpty().WithMessage(SWTarefasMessagesExceptions.TarefaVazia);
+            RuleFor(r => r.TarefaId).MustAsync(ExisteTarefaId).WithMessage(SWTarefasMessagesExceptions.TarefaNaoExiste);
+            RuleFor(r => r.DataConclusaoPrevista).LessThanOrEqualTo(x => x.DataConclusaoRealizada ).WithMessage(SWTarefasMessagesExceptions.DataConclusaoInferiorDataPrevista);
             Include(new TarefaBaseValidation());
         }
 
