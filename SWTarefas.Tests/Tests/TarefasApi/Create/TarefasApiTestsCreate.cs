@@ -4,18 +4,21 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using System.Net;
 using System.Text;
 using FluentAssertions;
+using Bogus;
 
 namespace SWTarefas.Tests.Tests.TarefasApi.Create
 {
     public class TarefasApiTestsCreate
     {
+        private readonly Faker _faker = new Faker("pt_BR");
         private const string url = "/tarefas";
 
-        [Theory]
-        [InlineData("Titulo 1", "Decricao 1")]
-        [InlineData("Titulo 2", "Decricao 2")]
-        public async Task TarefasAPI_Create_Created(string requestTitulo, string requestDescricao)
+        [Fact]
+        public async Task TarefasAPI_Create_Created()
         {
+            string requestTitulo = Guid.NewGuid().ToString();
+            string requestDescricao = Guid.NewGuid().ToString();
+
             await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
 
@@ -38,11 +41,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             tarefaResponse.Descricao.Should().Be(requestDescricao);
         }
 
-        [Theory]
-        [InlineData("", "Decricao Titulo Invalido 1")]
-        [InlineData("", "")]
-        public async Task TarefasAPI_Create_Titulo_Vazio_Invalido_BadRequest(string requestTitulo, string requestDescricao)
+        [Fact]
+        public async Task TarefasAPI_Create_Titulo_Vazio_Invalido_BadRequest()
         {
+            string requestTitulo = string.Empty;
+            string requestDescricao = Guid.NewGuid().ToString();
+
             await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
 
@@ -58,14 +62,15 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
-            contents.Should().Contain("O campo titulo não pode fica vazio.");
+            contents.Should().Contain("O campo título não pode fica vazio.");
         }
 
-        [Theory]
-        [InlineData("Titulo Maximo Caracteres Invalido Titulo Maximo Caracteres Invalido  Titulo Maximo Caracteres Invalido Titulo Maximo Caracteres Invalido", "Decricao Titulo Invalido 1")]
-        [InlineData("Titulo Maximo Caracteres Invalido Titulo Maximo Caracteres Invalido  Titulo Maximo Caracteres Invalido Titulo Maximo Caracteres Invalido Titulo Maximo Caracteres Invalido Titulo Maximo Caracteres Invalido  Titulo Maximo Caracteres Invalido Titulo Maximo Caracteres Invalido", "")]
-        public async Task TarefasAPI_Create_Titulo_Maximo_Caracteres_Invalido_BadRequest(string requestTitulo, string requestDescricao)
+        [Fact]
+        public async Task TarefasAPI_Create_Titulo_Maximo_Caracteres_Invalido_BadRequest()
         {
+            var requestTitulo = _faker.Lorem.Paragraphs(5);
+            var requestDescricao = Guid.NewGuid().ToString();
+
             await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
 
@@ -81,7 +86,31 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
-            contents.Should().Contain("O campo titulo tem no máximo 100 cacteres.");
+            contents.Should().Contain("O campo título tem no máximo 100 cacteres.");
+        }
+
+        [Fact]
+        public async Task TarefasAPI_Create_Descricao_Maximo_Caracteres_Invalido_BadRequest()
+        {
+            var requestTitulo = Guid.NewGuid().ToString();
+            var requestDescricao = _faker.Lorem.Paragraphs(10);
+
+            await using var application = new TarefasApiAppication();
+            await TarefasMockData.CreateTarefas(application, false);
+
+
+            var tarefaRequest = new CreateTarefaRequest { Titulo = requestTitulo, Descricao = requestDescricao, DataConclusaoPrevista = new DateOnly(2025, 1, 1) };
+            var jsonContent = JsonConvert.SerializeObject(tarefaRequest);
+            var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+
+            var client = application.CreateClient();
+            var result = await client.PostAsync(url, contentString);
+            var contents = await result.Content.ReadAsStringAsync();
+
+            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            contents.Should().NotBeNull();
+            contents.Should().Contain("O campo descrição tem no máximo 400 cacteres.");
         }
     }
 }
