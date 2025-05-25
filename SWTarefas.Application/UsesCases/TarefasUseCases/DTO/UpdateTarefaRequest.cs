@@ -4,6 +4,8 @@
     {
         public int TarefaId { get; init; }
 
+        public UpdateTarefaRequest() { }
+
         public UpdateTarefaRequest(int tarefaId, string titulo, string? descricao, DateOnly? dataConclusaoPrevista, DateOnly? dataConclusaoRealizada, int status)
         {
             TarefaId = tarefaId;

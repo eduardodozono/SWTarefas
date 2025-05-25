@@ -11,6 +11,8 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO
         [JsonIgnore]
         public override DateOnly? DataConclusaoRealizada { get; init; } = null;
 
+        public CreateTarefaRequest() { }
+
         public CreateTarefaRequest(string titulo, string? descricao, DateOnly? dataConclusaoPrevista)
         {
             Titulo = titulo;

@@ -65,6 +65,9 @@ namespace SWTarefas.API.Controllers
         {
             var result = await _getAllTarefasUseCase.Execute(token);
 
+            if (result == null || result.Count() == 0)
+                return NoContent();
+
             return Ok(result);
         }
 
