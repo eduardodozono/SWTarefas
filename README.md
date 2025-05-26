@@ -1,4 +1,4 @@
-<div style="background-color: gray;">
+<div style="background-color: #b0b2b5;">
 <img src="https://swfast.com.br/wp-content/uploads/2021/10/swfast-logo.png" alt="SWFast"># SWTarefas  
 </div>
 Projeto está dividido em:
