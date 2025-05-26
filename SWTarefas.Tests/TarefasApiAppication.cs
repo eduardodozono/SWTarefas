@@ -18,7 +18,7 @@ namespace SWTarefas.Tests
             {
                 services.RemoveAll(typeof(DbContextOptions<SWTarefasContext>));
 
-                services.AddDbContext<SWTarefasContext>(options => options.UseInMemoryDatabase("ad9a8736-bd66-4ffc-ba4e-6a837bd003c7", database));
+                services.AddDbContext<SWTarefasContext>(options => options.UseInMemoryDatabase("ad9a8736-bd66-4ffc-ba4e-6a837bd003c7", database).EnableServiceProviderCaching(false));
             });
 
             return base.CreateHost(builder);

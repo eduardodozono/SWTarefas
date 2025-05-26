@@ -27,6 +27,9 @@ namespace SWTarefas.Tests.Tests.TarefasUsesCases
 
             var tarefasContext = new SWTarefasContext(inMemoryOptions);
 
+            tarefasContext.Database.EnsureDeleted();
+            tarefasContext.Database.EnsureCreated();
+           
             if (criar)
             {
                 using (var context = new SWTarefasContext(inMemoryOptions))

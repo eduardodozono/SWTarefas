@@ -13,6 +13,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
     {
         private readonly Faker _faker = new Faker("pt_BR");
         private const string url = "/tarefas";
+        private TarefasApiAppication application = new TarefasApiAppication();
 
         [Fact]
         public async Task TarefasAPI_Create_Created()
@@ -20,7 +21,6 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             string requestTitulo = Guid.NewGuid().ToString();
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
 
 
@@ -48,7 +48,6 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             string requestTitulo = string.Empty;
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
 
 
@@ -72,7 +71,6 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             var requestTitulo = _faker.Lorem.Paragraphs(5);
             var requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
 
 
@@ -96,7 +94,6 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             var requestTitulo = Guid.NewGuid().ToString();
             var requestDescricao = _faker.Lorem.Paragraphs(10);
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
 
 

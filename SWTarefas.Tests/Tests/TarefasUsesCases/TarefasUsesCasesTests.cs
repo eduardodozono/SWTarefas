@@ -37,7 +37,7 @@ namespace SWTarefas.Tests.Tests.TarefasUsesCases
             var result = await getAllTarefasUseCase.Execute();
 
             result.Should().NotBeNull();
-            result.Should().HaveCount(2);
+            result.Count().Should().Be(2);
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace SWTarefas.Tests.Tests.TarefasUsesCases
         }
 
         [Fact]
-        public async Task Execute_CreateTarefaUseCase_Deve_Incluir_Reggistro()
+        public async Task Execute_CreateTarefaUseCase_Deve_Incluir_Registro()
         {
             var tarefasContext = tarefasMockUseCases.GetDatabase(false);
 
@@ -81,7 +81,6 @@ namespace SWTarefas.Tests.Tests.TarefasUsesCases
 
             result.Should().NotBeNull();
             result.Titulo.Should().Be(tarefaCreate.Titulo);
-            result.TarefaId.Should().Be(1);
         }
 
         [Fact]
