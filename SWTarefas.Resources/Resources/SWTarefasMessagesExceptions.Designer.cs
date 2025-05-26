@@ -97,6 +97,24 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O status deve ser indicado como pendente caso a data de conclusão realizada não seja preenchida..
+        /// </summary>
+        public static string ErroStatusConcluidoDataRealizadaVazia {
+            get {
+                return ResourceManager.GetString("ErroStatusConcluidoDataRealizadaVazia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O status deve ser indicado como concluído caso tenha preenchido a data de conclusão realizada..
+        /// </summary>
+        public static string ErroStatusDataConclusao {
+            get {
+                return ResourceManager.GetString("ErroStatusDataConclusao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Problema ao converter a tarefa..
         /// </summary>
         public static string ProblemaConverterTarefa {
