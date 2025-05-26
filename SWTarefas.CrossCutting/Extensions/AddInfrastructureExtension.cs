@@ -13,9 +13,8 @@ namespace SWTarefas.CrossCutting.Extensions
     {
         public static IServiceCollection AddInfraExtension(this IServiceCollection services, IConfiguration configuration)
         {
-            // SQL Server
+            // Para utlizar o banco de dados SQL Server descomentar a linha abaixo e comentar a linha do banco em memoria
             //services.AddDbContext<SWTarefasContext>(sql => sql.UseSqlServer(configuration.GetConnectionString("Connection")));
-
             services.AddDbContext<SWTarefasContext>(sql => sql.UseInMemoryDatabase(configuration.GetConnectionString("InMemory")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
