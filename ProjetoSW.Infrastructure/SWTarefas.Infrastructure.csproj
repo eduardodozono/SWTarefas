@@ -24,4 +24,7 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="SWTarefas.Tests"/>
+	</ItemGroup>
 </Project>
