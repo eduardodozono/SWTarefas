@@ -40,7 +40,6 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             var contents = await result.Content.ReadAsStringAsync();
             var tarefaResponse = JsonConvert.DeserializeObject<UpdateTarefaResponse>(contents);
 
-
             result.StatusCode.Should().Be(HttpStatusCode.OK);
             tarefaResponse.Should().NotBeNull();
             tarefaResponse.Status.Should().Be(requestStatus);
@@ -58,14 +57,11 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             await TarefasMockData.CreateTarefas(application, false);
 
-
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
             var result = await client.PutAsync(url, contentString);
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
@@ -78,18 +74,14 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             string requestTitulo = Guid.NewGuid().ToString();
             string requestDescricao = Guid.NewGuid().ToString();
 
-            // using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, true);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -105,15 +97,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             await TarefasMockData.CreateTarefas(application, true);
 
-
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -131,15 +120,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             await TarefasMockData.CreateTarefas(application, true);
 
-
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -157,15 +143,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             await TarefasMockData.CreateTarefas(application, true);
 
-
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -182,14 +165,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
 
             await TarefasMockData.CreateTarefas(application, true);
 
-
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2025, 1, 2), DataConclusaoRealizada = new DateOnly(2025, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
