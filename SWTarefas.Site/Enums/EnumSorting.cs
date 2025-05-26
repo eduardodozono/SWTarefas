@@ -4,8 +4,8 @@
     {
         public enum Sorting
         {
-            Ascend = 1,
-            Descend = 2
+            Ascendente = 1,
+            Descendente = 2
         }
     }
 }

@@ -62,11 +62,11 @@ namespace SWTarefas.Site.Controllers
             {
                 switch (dataPrevistaOrd)
                 {
-                    case (int)Sorting.Ascend:
+                    case (int)Sorting.Ascendente:
                         listaTarefasModel = listaTarefasModel.OrderByDescending(x => x.Status).OrderBy(x => x.DataConclusaoPrevista);
 
                         break;
-                    case (int)Sorting.Descend:
+                    case (int)Sorting.Descendente:
                         listaTarefasModel = listaTarefasModel.OrderByDescending(x => x.Status).OrderByDescending(x => x.DataConclusaoPrevista);
 
                         break;
@@ -77,11 +77,11 @@ namespace SWTarefas.Site.Controllers
             {
                 switch (dataRealizadaOrd)
                 {
-                    case (int)Sorting.Ascend:
+                    case (int)Sorting.Ascendente:
                         listaTarefasModel = listaTarefasModel.OrderByDescending(x => x.Status).OrderBy(x => x.DataConclusaoRealizada);
 
                         break;
-                    case (int)Sorting.Descend:
+                    case (int)Sorting.Descendente:
                         listaTarefasModel = listaTarefasModel.OrderByDescending(x => x.Status).OrderByDescending(x => x.DataConclusaoRealizada);
 
                         break;
@@ -89,16 +89,6 @@ namespace SWTarefas.Site.Controllers
             }
 
             return listaTarefasModel;
-        }
-
-        public async Task<IActionResult> Details(int id, CancellationToken token = default)
-        {
-            var tarefaViewModel = await _readTarefasUseCaseSite.GetById(id, token);
-
-            if (tarefaViewModel == null)
-                return NotFound();
-
-            return View(tarefaViewModel);
         }
 
         public IActionResult Create()
