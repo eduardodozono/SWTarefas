@@ -23,7 +23,7 @@
 			</div>
 			<div class="form-group">
 				<label asp-for="DataConclusaoPrevista" class="control-label"></label>
-				<input type="date" asp-for="DataConclusaoPrevista" class="form-control" />
+				<input type="date" asp-for="DataConclusaoPrevista" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
 				<span asp-validation-for="DataConclusaoPrevista" class="text-danger"></span>
 			</div>
 			<div class="form-group" style="margin-top: 5px;">
