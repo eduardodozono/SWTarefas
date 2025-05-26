@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DataConclusaoInferiorDataPrevista" xml:space="preserve">
-    <value>A data de conclusão prevista tem que ser inferior ou igual a data de conclusão realizada.</value>
+    <value>A data prevista tem que ser inferior ou igual a data realizada.</value>
   </data>
   <data name="DataConclusaoSuperiorDataPrevista" xml:space="preserve">
-    <value>A data de conclusão realizada tem que ser superior ou igual a data de conclusão prevista.</value>
+    <value>A data realizada tem que ser superior ou igual a data prevista.</value>
   </data>
   <data name="DescricaoMaximoCaracteres" xml:space="preserve">
     <value>O campo descrição tem no máximo 400 cacteres.</value>
@@ -130,10 +130,10 @@
     <value>Erro desconhecido.</value>
   </data>
   <data name="ErroStatusConcluidoDataRealizadaVazia" xml:space="preserve">
-    <value>O status deve ser indicado como pendente caso a data de conclusão realizada não seja preenchida.</value>
+    <value>O status deve ser indicado como pendente caso a data realizada não seja preenchida.</value>
   </data>
   <data name="ErroStatusDataConclusao" xml:space="preserve">
-    <value>O status deve ser indicado como concluído caso tenha preenchido a data de conclusão realizada.</value>
+    <value>O status deve ser indicado como concluído caso tenha preenchido a data realizada.</value>
   </data>
   <data name="ProblemaConverterTarefa" xml:space="preserve">
     <value>Problema ao converter a tarefa.</value>

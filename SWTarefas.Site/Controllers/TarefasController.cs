@@ -139,7 +139,7 @@ namespace SWTarefas.Site.Controllers
             else
             {
                 if(tarefa.Status == (int)TarefaStatus.Concluída)
-                    ModelState.AddModelError("DataConclusaoRealizada", SWTarefasMessagesExceptions.ErroStatusConcluidoDataRealizadaVazia);
+                    ModelState.AddModelError("Status", SWTarefasMessagesExceptions.ErroStatusConcluidoDataRealizadaVazia);
             }
 
             if (ModelState.IsValid)

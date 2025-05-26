@@ -61,7 +61,7 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a A data de conclusão prevista tem que ser inferior ou igual a data de conclusão realizada..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A data prevista tem que ser inferior ou igual a data realizada..
         /// </summary>
         public static string DataConclusaoInferiorDataPrevista {
             get {
@@ -70,7 +70,7 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a A data de conclusão realizada tem que ser superior ou igual a data de conclusão prevista..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A data realizada tem que ser superior ou igual a data prevista..
         /// </summary>
         public static string DataConclusaoSuperiorDataPrevista {
             get {
@@ -97,7 +97,7 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O status deve ser indicado como pendente caso a data de conclusão realizada não seja preenchida..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O status deve ser indicado como pendente caso a data realizada não seja preenchida..
         /// </summary>
         public static string ErroStatusConcluidoDataRealizadaVazia {
             get {
@@ -106,7 +106,7 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O status deve ser indicado como concluído caso tenha preenchido a data de conclusão realizada..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O status deve ser indicado como concluído caso tenha preenchido a data realizada..
         /// </summary>
         public static string ErroStatusDataConclusao {
             get {
