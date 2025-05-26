@@ -2,6 +2,6 @@
 {
     public interface IDeleteTarefasUseCase
     {
-        public Task Execute(int tarefaId, CancellationToken token = default);
+        public Task<int> Execute(int tarefaId, CancellationToken token = default);
     }
 }

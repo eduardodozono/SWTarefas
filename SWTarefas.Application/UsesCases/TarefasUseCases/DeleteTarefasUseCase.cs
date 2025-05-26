@@ -19,7 +19,7 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases
             _unitOfWork = unitOfWork;
         }
 
-        public async Task Execute(int tarefaId, CancellationToken token = default)
+        public async Task<int> Execute(int tarefaId, CancellationToken token = default)
         {
             var tarefaDB = await _tarefaReadRepository.GetById(tarefaId);
 
@@ -29,6 +29,8 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases
             await _tarefaDeleteRepository.Delete(tarefaId, token);
 
             await _unitOfWork.Commit(token);
+
+            return tarefaId;
         }
     }
 }
