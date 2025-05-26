@@ -23,8 +23,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
         }
 
         [Theory]
-        [InlineData(1, (int)TarefaStatus.Pendente)]
-        [InlineData(2, (int)TarefaStatus.Concluída)]
+        [InlineData(1, (int)TarefaStatus.Concluída)]
         public async Task TarefasAPI_Update_OK(int requestTarefaId, int requestStatus)
         {
             string requestTitulo = Guid.NewGuid().ToString();
@@ -45,6 +44,46 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             tarefaResponse.Status.Should().Be(requestStatus);
             tarefaResponse.Titulo.Should().Be(requestTitulo);
             tarefaResponse.Descricao.Should().Be(requestDescricao);
+        }
+
+        [Theory]
+        [InlineData(1, (int)TarefaStatus.Pendente)]
+        public async Task TarefasAPI_Update_Status_Erro_Pendente_DataRealiza_Preenchida_BadRequest(int requestTarefaId, int requestStatus)
+        {
+            string requestTitulo = Guid.NewGuid().ToString();
+            string requestDescricao = Guid.NewGuid().ToString();
+
+            await TarefasMockData.CreateTarefas(application, true);
+
+            var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
+            var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
+            var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            var result = await client.PutAsync(url, contentString);
+            var contents = await result.Content.ReadAsStringAsync();
+
+            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            contents.Should().Contain(SWTarefasMessagesExceptions.StatusConcluidoErroApiDataRealizada);
+        }
+
+        [Theory]
+        [InlineData(1, (int)TarefaStatus.Concluída)]
+        public async Task TarefasAPI_Update_Status_Erro_Concluido_DataRealiza_Nao_Preenchida_BadRequest(int requestTarefaId, int requestStatus)
+        {
+            string requestTitulo = Guid.NewGuid().ToString();
+            string requestDescricao = Guid.NewGuid().ToString();
+
+            await TarefasMockData.CreateTarefas(application, true);
+
+            var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1) };
+            var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
+            var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            var result = await client.PutAsync(url, contentString);
+            var contents = await result.Content.ReadAsStringAsync();
+
+            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            contents.Should().Contain(SWTarefasMessagesExceptions.StatusPendenteErroApiDataRealizadaVazia);
         }
 
         [Theory]
@@ -158,7 +197,7 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
         [Theory]
         [InlineData(1, (int)TarefaStatus.Pendente)]
         [InlineData(2, (int)TarefaStatus.Concluída)]
-        public async Task TarefasAPI_Update_DataPrevista_DataRealizada_Invalida_BadRequest(int requestTarefaId, int requestStatus)
+        public async Task TarefasAPI_Update_DataPrevista_Maior_DataRealizada_Invalida_BadRequest(int requestTarefaId, int requestStatus)
         {
             var requestTitulo = Guid.NewGuid().ToString();
             var requestDescricao = Guid.NewGuid().ToString();

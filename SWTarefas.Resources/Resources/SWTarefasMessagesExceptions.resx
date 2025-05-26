@@ -126,6 +126,9 @@
   <data name="DescricaoMaximoCaracteres" xml:space="preserve">
     <value>O campo descrição tem no máximo 400 cacteres.</value>
   </data>
+  <data name="ErroDataPrevistaVazia" xml:space="preserve">
+    <value>A data prevista não pode ficar vazia.</value>
+  </data>
   <data name="ErroDesconhecido" xml:space="preserve">
     <value>Erro desconhecido.</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="ProblemaConverterTarefa" xml:space="preserve">
     <value>Problema ao converter a tarefa.</value>
   </data>
+  <data name="StatusConcluidoErroApiDataRealizada" xml:space="preserve">
+    <value>Status deve ser (1 - concluído) quando a data realizada estiver preenchida.</value>
+  </data>
   <data name="StatusInvalido" xml:space="preserve">
     <value>Status inválido (1 - Concluída, 2 - Pendente).</value>
+  </data>
+  <data name="StatusPendenteErroApiDataRealizadaVazia" xml:space="preserve">
+    <value>Status deve ser (2 - pendente) quando a data realizada estiver vazia.</value>
   </data>
   <data name="StatusVazio" xml:space="preserve">
     <value>O campo status não pode fica vazio.</value>

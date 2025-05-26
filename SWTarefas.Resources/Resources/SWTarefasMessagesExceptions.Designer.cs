@@ -88,6 +88,15 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A data prevista não pode ficar vazia..
+        /// </summary>
+        public static string ErroDataPrevistaVazia {
+            get {
+                return ResourceManager.GetString("ErroDataPrevistaVazia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Erro desconhecido..
         /// </summary>
         public static string ErroDesconhecido {
@@ -124,11 +133,29 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Status deve ser (1 - concluído) quando a data realizada estiver preenchida..
+        /// </summary>
+        public static string StatusConcluidoErroApiDataRealizada {
+            get {
+                return ResourceManager.GetString("StatusConcluidoErroApiDataRealizada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Status inválido (1 - Concluída, 2 - Pendente)..
         /// </summary>
         public static string StatusInvalido {
             get {
                 return ResourceManager.GetString("StatusInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Status deve ser (2 - pendente) quando a data realizada estiver vazia..
+        /// </summary>
+        public static string StatusPendenteErroApiDataRealizadaVazia {
+            get {
+                return ResourceManager.GetString("StatusPendenteErroApiDataRealizadaVazia", resourceCulture);
             }
         }
         
