@@ -13,6 +13,13 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
     {
         private readonly Faker _faker = new Faker("pt_BR");
         private const string url = "/tarefas";
+        private TarefasApiAppication application = new TarefasApiAppication();
+        private HttpClient client;
+
+        public TarefasApiTestsCreate()
+        {
+            client = application.CreateClient();
+        }
 
         [Fact]
         public async Task TarefasAPI_Create_Created()
@@ -20,20 +27,15 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             string requestTitulo = Guid.NewGuid().ToString();
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
-
 
             var tarefaRequest = new CreateTarefaRequest { Titulo = requestTitulo, Descricao = requestDescricao, DataConclusaoPrevista = new DateOnly(2025, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaRequest);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PostAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
             var tarefaResponse = JsonConvert.DeserializeObject<CreateTarefaResponse>(contents);
-
 
             result.StatusCode.Should().Be(HttpStatusCode.Created);
             tarefaResponse.Should().NotBeNull();
@@ -48,16 +50,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             string requestTitulo = string.Empty;
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
-
 
             var tarefaRequest = new CreateTarefaRequest { Titulo = requestTitulo, Descricao = requestDescricao, DataConclusaoPrevista = new DateOnly(2025, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaRequest);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PostAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
 
@@ -72,16 +70,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             var requestTitulo = _faker.Lorem.Paragraphs(5);
             var requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
-
 
             var tarefaRequest = new CreateTarefaRequest { Titulo = requestTitulo, Descricao = requestDescricao, DataConclusaoPrevista = new DateOnly(2025, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaRequest);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PostAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
 
@@ -96,16 +90,12 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Create
             var requestTitulo = Guid.NewGuid().ToString();
             var requestDescricao = _faker.Lorem.Paragraphs(10);
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
-
 
             var tarefaRequest = new CreateTarefaRequest { Titulo = requestTitulo, Descricao = requestDescricao, DataConclusaoPrevista = new DateOnly(2025, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaRequest);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PostAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
 

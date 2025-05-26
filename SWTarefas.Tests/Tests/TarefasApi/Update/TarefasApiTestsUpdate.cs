@@ -6,6 +6,7 @@ using System.Text;
 using FluentAssertions;
 using Bogus;
 using SWTarefas.Resources.Resources;
+using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace SWTarefas.Tests.Tests.TarefasApi.Update
 {
@@ -13,6 +14,13 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
     {
         private readonly Faker _faker = new Faker("pt_BR");
         private const string url = "/tarefas";
+        private TarefasApiAppication application = new TarefasApiAppication();
+        private HttpClient client;
+
+        public TarefasApiTestsUpdate()
+        {
+            client = application.CreateClient();
+        }
 
         [Theory]
         [InlineData(1, (int)TarefaStatus.Pendente)]
@@ -22,20 +30,15 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             string requestTitulo = Guid.NewGuid().ToString();
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, true);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
             var tarefaResponse = JsonConvert.DeserializeObject<UpdateTarefaResponse>(contents);
-
 
             result.StatusCode.Should().Be(HttpStatusCode.OK);
             tarefaResponse.Should().NotBeNull();
@@ -52,18 +55,13 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             string requestTitulo = Guid.NewGuid().ToString();
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, false);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PutAsync(url, contentString);
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
@@ -76,19 +74,14 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             string requestTitulo = Guid.NewGuid().ToString();
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, true);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -102,19 +95,14 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
         {
             string requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, true);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -130,19 +118,14 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             var requestTitulo = _faker.Lorem.Paragraphs(5);
             var requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, true);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -158,19 +141,14 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             var requestTitulo = Guid.NewGuid().ToString();
             var requestDescricao = _faker.Lorem.Paragraphs(8);
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, true);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2026, 1, 1), DataConclusaoRealizada = new DateOnly(2026, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
@@ -185,19 +163,14 @@ namespace SWTarefas.Tests.Tests.TarefasApi.Update
             var requestTitulo = Guid.NewGuid().ToString();
             var requestDescricao = Guid.NewGuid().ToString();
 
-            await using var application = new TarefasApiAppication();
             await TarefasMockData.CreateTarefas(application, true);
-
 
             var tarefaTeste = new UpdateTarefaRequest { TarefaId = requestTarefaId, Titulo = requestTitulo, Descricao = requestDescricao, Status = requestStatus, DataConclusaoPrevista = new DateOnly(2025, 1, 2), DataConclusaoRealizada = new DateOnly(2025, 1, 1) };
             var jsonContent = JsonConvert.SerializeObject(tarefaTeste);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-
-            var client = application.CreateClient();
             var result = await client.PutAsync(url, contentString);
             var contents = await result.Content.ReadAsStringAsync();
-
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             contents.Should().NotBeNull();
