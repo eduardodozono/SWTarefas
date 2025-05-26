@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.Interfaces;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel;
 using SWTarefas.Resources.Resources;
+using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum;
 using static SWTarefas.Site.Enums.EnumSorting;
 
 namespace SWTarefas.Site.Controllers
@@ -128,8 +129,18 @@ namespace SWTarefas.Site.Controllers
                 return NotFound();
 
             if (tarefa.DataConclusaoRealizada != null)
+            {
                 if (tarefa.DataConclusaoRealizada < tarefa.DataConclusaoPrevista)
                     ModelState.AddModelError("DataConclusaoRealizada", SWTarefasMessagesExceptions.DataConclusaoSuperiorDataPrevista);
+
+                if (tarefa.Status == (int)TarefaStatus.Pendente)
+                    ModelState.AddModelError("Status", SWTarefasMessagesExceptions.ErroStatusDataConclusao);
+            }
+            else
+            {
+                if(tarefa.Status == (int)TarefaStatus.Concluída)
+                    ModelState.AddModelError("DataConclusaoRealizada", SWTarefasMessagesExceptions.ErroStatusConcluidoDataRealizadaVazia);
+            }
 
             if (ModelState.IsValid)
             {

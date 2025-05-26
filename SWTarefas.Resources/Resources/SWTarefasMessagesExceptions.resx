@@ -129,6 +129,12 @@
   <data name="ErroDesconhecido" xml:space="preserve">
     <value>Erro desconhecido.</value>
   </data>
+  <data name="ErroStatusConcluidoDataRealizadaVazia" xml:space="preserve">
+    <value>O status deve ser indicado como pendente caso a data de conclusão realizada não seja preenchida.</value>
+  </data>
+  <data name="ErroStatusDataConclusao" xml:space="preserve">
+    <value>O status deve ser indicado como concluído caso tenha preenchido a data de conclusão realizada.</value>
+  </data>
   <data name="ProblemaConverterTarefa" xml:space="preserve">
     <value>Problema ao converter a tarefa.</value>
   </data>
