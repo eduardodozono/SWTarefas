@@ -1,6 +1,4 @@
-<div style="background-color: #b0b2b5;">
-<img src="https://swfast.com.br/wp-content/uploads/2021/10/swfast-logo.png" alt="SWFast"># SWTarefas  
-</div>
+<img src="https://swfast.com.br/wp-content/uploads/2021/10/swfast-logo.png" alt="SWFast" style="background-color: #f0f0f0;"># SWTarefas  
 Projeto está dividido em:
 1. SWTarefas.API
 Este projeto contém as apis em rest com os endpoints para a criação, alteração, exclusão e consultas das tarefas existentes.
