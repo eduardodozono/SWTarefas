@@ -18,5 +18,13 @@ Este projeto contém a apresentação para o usuário final das funcionalidades
 Este projeto contém os testes da solução.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Como testar:
-Para facilitar eu deixei preparado para um banco de dados em memória em então é somente rodar o projeto desejado (SWTarefas.API, SWTarefas.Site) e iniciar os testes.
-A parte das apis estão documentadas com o Swagger e pode ser testada no mesmo.
+Para facilitar eu deixei preparado para um banco de dados em memória em então é somente rodar o projeto desejado e iniciar os testes.
+A parte das apis estão documentadas com o Swagger e pode ser testada no mesmo ou em qualquer ferramenta desejada pelo endpoint("/tarefas").
+
+* Banco de dados persistente (Sql Server)
+Nos projetos de (SWTarefas.API e SWTarefas.Site), existem os arquivos de configurações dos bancos (appsettings.json), no caso do Sql Server é preciso informar a string de conexão.
+Mudar o tipo do banco de dados no projeto (SWTarefas.CrossCutting) no arquivo (AddInfrastructureExtension.cs) neste aquivo esta comentado oque precisar ser modificado.
+1. Existe uma pasta de migração do banco de dados no projeto (SWTarefas.Infrastructure)
+Essa pasta contém a migração final do banco de dados.
+2. Rodar o comando de migração para criar o banco e as tabelas:
+update-database final
