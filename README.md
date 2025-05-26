@@ -1,4 +1,4 @@
-# SWTarefas  
+# SWTarefas (net8.0)
 Projeto está dividido em:
 1. SWTarefas.API<br/>
 Este projeto contém as apis em rest com os endpoints para a criação, alteração, exclusão e consultas das tarefas existentes.
