@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.Interfaces;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel;
 using SWTarefas.Resources.Resources;
-using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum;
-using static SWTarefas.Site.Enums.EnumSorting;
+using SWTarefas.Site.Enums;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
 
 namespace SWTarefas.Site.Controllers
 {

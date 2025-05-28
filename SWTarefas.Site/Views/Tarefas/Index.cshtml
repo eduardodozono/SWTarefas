@@ -2,7 +2,6 @@
 @using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
 @using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
 @model IEnumerable<TarefaViewModel>
-@using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum
 @using MvcPagedList.Core;
 @using SWTarefas.Site.Enums;
 
@@ -64,7 +63,7 @@
 											<select name="dataPrevistaOrd" id="dataPrevistaOrd" class="form-control" onchange="VerificaOrdenacaoPrevista()">
 												<option></option>
 												@{
-													foreach (var item in Html.GetEnumSelectList<EnumSorting.Sorting>())
+													foreach (var item in Html.GetEnumSelectList<Sorting>())
 													{
 														if (item.Value == ViewBag.DataPrevistaOrd)
 														{
@@ -89,7 +88,7 @@
 											<select name="dataRealizadaOrd" id="dataRealizadaOrd" class="form-control" onchange="VerificaOrdenacaoRealizada()">
 												<option></option>
 												@{
-													foreach (var item in Html.GetEnumSelectList<EnumSorting.Sorting>())
+													foreach (var item in Html.GetEnumSelectList<Sorting>())
 													{
 														if (item.Value == ViewBag.DataRealizadaOrd)
 														{
@@ -160,7 +159,7 @@
 					@Html.DisplayFor(modelItem => item.DataConclusaoRealizada)
 				</td>
 				<td>
-					@((StatusEnum.TarefaStatus)item.Status)
+					@((TarefaStatus)item.Status)
 				</td>
 			</tr>
 		}
