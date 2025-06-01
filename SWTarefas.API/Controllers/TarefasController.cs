@@ -56,7 +56,12 @@ namespace SWTarefas.API.Controllers
             return Ok(result);
         }
 
+
         [HttpGet("{tarefaId:int}")]
+        [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
         public async Task<IActionResult> GetById([FromServices] IGetByIdTarefasUseCase _getByIdTarefasUseCase, int tarefaId, CancellationToken token = default)
         {
             var result = await _getByIdTarefasUseCase.Execute(tarefaId, token);
