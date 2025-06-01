@@ -19,7 +19,7 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities
 
         public static Tarefa Build_Tarefa_Concluida()
         {
-            var tarefaConcluida = new Faker<Tarefa>().RuleFor(t => t.TarefaId, 1)
+            var tarefaConcluida = new Faker<Tarefa>().RuleFor(t => t.TarefaId, 2)
                  .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
                  .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
                  .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))

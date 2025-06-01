@@ -28,5 +28,28 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities
 
             return listaTarefas;
         }
+
+        public static List<Tarefa> Build_Create()
+        {
+            var listaTarefas = new List<Tarefa>();
+
+            var tarefa1 = new Faker<Tarefa>()
+                .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
+                .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
+                .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
+                .RuleFor(t => t.Status, (int)TarefaStatus.Pendente);
+
+            var tarefa2 = new Faker<Tarefa>()
+                 .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
+                 .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
+                 .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
+                 .RuleFor(t => t.DataConclusaoRealizada, new DateOnly(2025, 1, 1))
+                 .RuleFor(t => t.Status, (int)TarefaStatus.Concluída);
+
+            listaTarefas.Add(tarefa1);
+            listaTarefas.Add(tarefa2);
+
+            return listaTarefas;
+        }
     }
 }

@@ -13,9 +13,14 @@ namespace SWTarefas.CrossCutting.Extensions
     {
         public static IServiceCollection AddInfraExtension(this IServiceCollection services, IConfiguration configuration)
         {
-            // Para utlizar o banco de dados SQL Server descomentar a linha abaixo e comentar a linha do banco em memoria
-            //services.AddDbContext<SWTarefasContext>(sql => sql.UseSqlServer(configuration.GetConnectionString("Connection")));
-            services.AddDbContext<SWTarefasContext>(sql => sql.UseInMemoryDatabase(configuration.GetConnectionString("InMemory")));
+            if (!configuration.IsUnitTestEnviroment())
+            {
+                // Para utlizar o banco de dados SQL Server descomentar a linha abaixo e comentar a linha do banco em memoria
+                //services.AddDbContext<SWTarefasContext>(sql => sql.UseSqlServer(configuration.GetConnectionString("Connection")));
+
+                // Banco de dados em memoria foi colocado somente para facilitar os testes mas o real seria o Sql Server
+                services.AddDbContext<SWTarefasContext>(sql => sql.UseInMemoryDatabase(configuration.GetConnectionString("InMemory")!));
+            }
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ITarefaWriteRepository, TarefaRepository>();
@@ -24,5 +29,14 @@ namespace SWTarefas.CrossCutting.Extensions
 
             return services;
         }
+
+        public static bool IsUnitTestEnviroment(this IConfiguration configuration)
+        {
+            if(configuration.GetSection("InMemoryTest").Value == null)
+                return false;
+
+            return Boolean.Parse(configuration.GetSection("InMemoryTest").Value!);
+        }
+
     }
 }
