@@ -4,6 +4,7 @@ using FluentAssertions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using Newtonsoft.Json;
 using SWTarefas.Tests.TestsMoq.Common.Entities;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Read
 {
@@ -41,6 +42,8 @@ namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Read
         [Fact]
         public async Task Success_No_Content()
         {
+            await TarefasDataBaseUtils.DeleteAllTarefas(_factory);
+
             var result = await _httpClient.GetAsync(_urlEndPoint);
 
             var responseBody = await result.Content.ReadAsStringAsync();
@@ -48,7 +51,7 @@ namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Read
             var responseData = JsonConvert.DeserializeObject<IEnumerable<GetAllTarefaResponse>?>(responseBody);
 
             result.StatusCode.Should().Be(HttpStatusCode.NoContent);
-            responseData.Should().BeNull();
+            responseData.Should().BeNull(SWTarefasMessagesExceptions.TarefaNaoExiste);
         }
     }
 }
