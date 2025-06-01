@@ -31,8 +31,8 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities
 
         public static Tarefa Build_Tarefa_Pendente_Titulo_Vazio()
         {
-            var tarefaPendente = new Faker<Tarefa>().RuleFor(t => t.TarefaId, 1)
-               .RuleFor(t => t.Titulo, string.Empty)
+            var tarefaPendente = new Faker<Tarefa>()
+               .RuleFor(t => t.Titulo, string.Empty).RuleFor(t => t.TarefaId, 1)
                .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
                .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
                .RuleFor(t => t.Status, (int)TarefaStatus.Pendente);
@@ -55,7 +55,7 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities
         {
             var tarefaPendente = new Faker<Tarefa>().RuleFor(t => t.TarefaId, 1)
                .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
-               .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(10))
+               .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(12))
                .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
                .RuleFor(t => t.Status, (int)TarefaStatus.Pendente);
 
