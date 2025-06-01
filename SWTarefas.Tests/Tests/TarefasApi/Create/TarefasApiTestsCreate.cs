@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using System.Net;
 using System.Text;

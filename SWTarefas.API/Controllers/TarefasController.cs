@@ -8,26 +8,11 @@ namespace SWTarefas.API.Controllers
     [ApiController]
     public class TarefasController : ControllerBase
     {
-        private readonly ICreateTarefaUseCase _createTarefaUseCase;
-        private readonly IDeleteTarefasUseCase _deleteTarefasUseCase;
-        private readonly IUpdateTarefasUseCase _updateTarefasUseCase;
-        private readonly IGetAllTarefasUseCase _getAllTarefasUseCase;
-        private readonly IGetByIdTarefasUseCase _getByIdTarefasUseCase;
-
-        public TarefasController(ICreateTarefaUseCase createTarefaUseCase, IDeleteTarefasUseCase deleteTarefasUseCase, IUpdateTarefasUseCase updateTarefasUseCase, IGetAllTarefasUseCase getAllTarefasUseCase, IGetByIdTarefasUseCase getByIdTarefasUseCase)
-        {
-            _createTarefaUseCase = createTarefaUseCase;
-            _deleteTarefasUseCase = deleteTarefasUseCase;
-            _updateTarefasUseCase = updateTarefasUseCase;
-            _getAllTarefasUseCase = getAllTarefasUseCase;
-            _getByIdTarefasUseCase = getByIdTarefasUseCase;
-        }
-
         [HttpPost]
         [ProducesResponseType(typeof(CreateTarefaResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(CreateTarefaResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create(CreateTarefaRequest request, CancellationToken token = default)
+        public async Task<IActionResult> Create([FromServices] ICreateTarefaUseCase _createTarefaUseCase, CreateTarefaRequest request, CancellationToken token = default)
         {
             var result = await _createTarefaUseCase.Execute(request, token);
 
@@ -38,7 +23,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete(int tarefaId, CancellationToken token = default)
+        public async Task<IActionResult> Delete([FromServices] IDeleteTarefasUseCase _deleteTarefasUseCase, int tarefaId, CancellationToken token = default)
         {
             await _deleteTarefasUseCase.Execute(tarefaId, token);
 
@@ -49,7 +34,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(UpdateTarefaResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(UpdateTarefaResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(UpdateTarefaRequest request, CancellationToken token = default)
+        public async Task<IActionResult> Update([FromServices] IUpdateTarefasUseCase _updateTarefasUseCase, UpdateTarefaRequest request, CancellationToken token = default)
         {
             var result = await _updateTarefasUseCase.Execute(request, token);
 
@@ -61,7 +46,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(GetAllTarefaResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(GetAllTarefaResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAll(CancellationToken token = default)
+        public async Task<IActionResult> GetAll([FromServices] IGetAllTarefasUseCase _getAllTarefasUseCase, CancellationToken token = default)
         {
             var result = await _getAllTarefasUseCase.Execute(token);
 
@@ -72,7 +57,7 @@ namespace SWTarefas.API.Controllers
         }
 
         [HttpGet("{tarefaId:int}")]
-        public async Task<IActionResult> GetById(int tarefaId, CancellationToken token = default)
+        public async Task<IActionResult> GetById([FromServices] IGetByIdTarefasUseCase _getByIdTarefasUseCase, int tarefaId, CancellationToken token = default)
         {
             var result = await _getByIdTarefasUseCase.Execute(tarefaId, token);
 

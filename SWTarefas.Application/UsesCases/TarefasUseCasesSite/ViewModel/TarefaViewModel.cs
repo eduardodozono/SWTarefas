@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum;
-using SWTarefas.Resources.Resources;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
 {

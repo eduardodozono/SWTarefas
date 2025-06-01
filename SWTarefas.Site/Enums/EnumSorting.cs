@@ -1,11 +1,8 @@
 ﻿namespace SWTarefas.Site.Enums
 {
-    public class EnumSorting
+    public enum Sorting
     {
-        public enum Sorting
-        {
-            Ascendente = 1,
-            Descendente = 2
-        }
+        Ascendente = 1,
+        Descendente = 2
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using static SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums.StatusEnum;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO
 {
