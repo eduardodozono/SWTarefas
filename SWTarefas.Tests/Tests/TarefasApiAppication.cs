@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using SWTarefas.Infrastructure.DataAcess;
 
-namespace SWTarefas.Tests
+namespace SWTarefas.Tests.Tests
 {
     public class TarefasApiAppication : WebApplicationFactory<ProgramApi>
     {
