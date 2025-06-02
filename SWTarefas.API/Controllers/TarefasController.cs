@@ -4,9 +4,7 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces;
 
 namespace SWTarefas.API.Controllers
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class TarefasController : ControllerBase
+    public class TarefasController : TarefasBaseController
     {
         [HttpPost]
         [ProducesResponseType(typeof(CreateTarefaResponse), StatusCodes.Status201Created)]
@@ -61,7 +59,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetById([FromServices] IGetByIdTarefasUseCase _getByIdTarefasUseCase, int tarefaId, CancellationToken token = default)
         {
             var result = await _getByIdTarefasUseCase.Execute(tarefaId, token);

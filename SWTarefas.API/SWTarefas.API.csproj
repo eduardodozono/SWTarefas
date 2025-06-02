@@ -11,6 +11,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.15" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
@@ -19,6 +21,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="SWTarefas.Tests"/>
+		<InternalsVisibleTo Include="SWTarefas.Tests" />
 	</ItemGroup>
 </Project>
