@@ -141,6 +141,9 @@
   <data name="ProblemaConverterTarefa" xml:space="preserve">
     <value>Problema ao converter a tarefa.</value>
   </data>
+  <data name="RecursoNaoDisponivel" xml:space="preserve">
+    <value>Recurso não disponível.</value>
+  </data>
   <data name="StatusConcluidoErroApiDataRealizada" xml:space="preserve">
     <value>Status deve ser (1 - concluído) quando a data realizada estiver preenchida.</value>
   </data>
@@ -164,5 +167,11 @@
   </data>
   <data name="TituloVazio" xml:space="preserve">
     <value>O campo título não pode fica vazio.</value>
+  </data>
+  <data name="TokenEspirado" xml:space="preserve">
+    <value>Token expirado.</value>
+  </data>
+  <data name="TokenNaoEncontrado" xml:space="preserve">
+    <value>Token não encontrado.</value>
   </data>
 </root>

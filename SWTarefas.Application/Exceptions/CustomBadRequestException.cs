@@ -4,11 +4,11 @@
     {
         public readonly IList<string> _errors = new List<string>();
 
-        public CustomBadRequestException(IList<string> errors)
+        public CustomBadRequestException(IList<string> errors) : base(string.Empty)
         {
             _errors = errors;
         }
-        public CustomBadRequestException(string error)
+        public CustomBadRequestException(string error) : base(string.Empty)
         {
             _errors.Add(error);
         }
