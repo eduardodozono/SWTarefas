@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using ProjetoSW.Infrastructure.DataAcess.Repository.UnitOfWork;
 using SWTarefas.Application.Cryptography;
 using SWTarefas.Infrastructure.DataAcess;
@@ -27,12 +30,16 @@ namespace SWTarefas.CrossCutting.Extensions
                 //services.AddDbContext<SWTarefasContext>(sql => sql.UseInMemoryDatabase(configuration.GetConnectionString("InMemory")!));
             }
 
+            services.AddScoped<ICustomEncripter, CustomEncripter>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddScoped<ITarefaWriteRepository, TarefaRepository>();
             services.AddScoped<ITarefaReadRepository, TarefaRepository>();
             services.AddScoped<ITarefaDeleteRepository, TarefaRepository>();
-            services.AddScoped<ICustomEncripter, CustomEncripter>();
+
             services.AddScoped<IUsuarioReadRepository, UsuarioRepository>();
+            services.AddScoped<IUsuarioWriteRepository, UsuarioRepository>();
 
             return services;
         }
@@ -41,6 +48,25 @@ namespace SWTarefas.CrossCutting.Extensions
         {
             var expirationTimeMinutes = uint.Parse(configuration.GetSection("Settings:Jwt:ExpirationTimeMinutes").Value ?? "10");
             var signingKey = configuration.GetSection("Settings:Jwt:SigningKey").Value ?? string.Empty;
+            var key = Encoding.UTF8.GetBytes(signingKey);
+
+            services.AddAuthentication(config =>
+            {
+                config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(config =>
+            {
+                config.RequireHttpsMetadata = false;
+                config.SaveToken = true;
+                config.TokenValidationParameters = new TokenValidationParameters
+                {
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             services.AddScoped<IJwtTokenGenerator>(option => new JwtTokenGenerator(expirationTimeMinutes, signingKey));
             services.AddScoped<IAcessTokenValidator>(option => new AcessTokenValidator(signingKey));

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using SWTarefas.Resources.Resources;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases.Validations
 {

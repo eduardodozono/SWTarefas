@@ -20,13 +20,14 @@ namespace SWTarefas.API.Controllers
         }
 
         [HttpPost()]
-        [ProducesResponseType(typeof(UsuariosLoginUseCaseCreateResponse), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(UsuariosLoginUseCaseCreateResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(UsuariosLoginUseCaseCreateResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromServices] ILoginUsuariosUseCaseCreate loginUsuariosUseCaseCreate, [FromBody] UsuariosLoginUseCaseCreateRequest request, CancellationToken token = default)
+        [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Create([FromServices] ICreateLoginUsuariosUseCase loginUsuariosUseCaseCreate, [FromBody] CreateUsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
-           
-            return Ok();
+            var result = await loginUsuariosUseCaseCreate.Execute(request, token);
+
+            return Created(string.Empty, result);
         }
     }
 }
