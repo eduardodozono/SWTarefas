@@ -17,7 +17,7 @@ namespace SWTarefas.CrossCutting.Extensions
             services.AddScoped<IGetByIdTarefasUseCase, GetByIdTarefasUseCase>();
 
             services.AddScoped<ILoginUsuariosUseCase, LoginUsuariosUseCase>();
-            services.AddScoped<ILoginUsuariosUseCaseCreate, LoginUsuariosUseCaseCreate>();
+            services.AddScoped<ICreateLoginUsuariosUseCase, CreateLoginUsuariosUseCase>();
 
             return services;
         }

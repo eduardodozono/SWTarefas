@@ -30,18 +30,23 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases
             if (tarefaDomain == null)
                 throw new CustomBadRequestException(SWTarefasMessagesExceptions.ProblemaConverterTarefa);
 
-            var validator = new TarefaBaseValidation();
-
-            var result = await validator.ValidateAsync(tarefa, token);
-
-            if (!result.IsValid)
-                throw new CustomBadRequestException(result.Errors.Select(x => x.ErrorMessage).ToList());
+            await Validate(tarefa, token);
 
             await _tarefaWriteRepository.Create(tarefaDomain, token);
 
             await _unitOfWork.Commit(token);
 
             return _mapper.Map<CreateTarefaResponse>(tarefaDomain);
+        }
+
+        public async Task Validate(CreateTarefaRequest tarefa, CancellationToken token = default)
+        {
+            var validator = new TarefaBaseValidation();
+
+            var result = await validator.ValidateAsync(tarefa, token);
+
+            if (!result.IsValid)
+                throw new CustomBadRequestException(result.Errors.Select(x => x.ErrorMessage).ToList());
         }
     }
 }

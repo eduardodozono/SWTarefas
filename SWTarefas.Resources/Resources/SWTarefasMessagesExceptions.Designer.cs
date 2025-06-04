@@ -88,6 +88,33 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O campo email é inválido..
+        /// </summary>
+        public static string EmailInvalido {
+            get {
+                return ResourceManager.GetString("EmailInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Este email já existe no sistema..
+        /// </summary>
+        public static string EmailJaExiste {
+            get {
+                return ResourceManager.GetString("EmailJaExiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O campo email é obrigatório..
+        /// </summary>
+        public static string EmailObrigatorio {
+            get {
+                return ResourceManager.GetString("EmailObrigatorio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A data prevista não pode ficar vazia..
         /// </summary>
         public static string ErroDataPrevistaVazia {
@@ -120,6 +147,33 @@ namespace SWTarefas.Resources.Resources {
         public static string ErroStatusDataConclusao {
             get {
                 return ResourceManager.GetString("ErroStatusDataConclusao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O Campo nome nao pode ficar vazio..
+        /// </summary>
+        public static string NomeVazio {
+            get {
+                return ResourceManager.GetString("NomeVazio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O campo password é inválido..
+        /// </summary>
+        public static string PasswordInvalido {
+            get {
+                return ResourceManager.GetString("PasswordInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O campo password é obrigatório..
+        /// </summary>
+        public static string PasswordObrigatorio {
+            get {
+                return ResourceManager.GetString("PasswordObrigatorio", resourceCulture);
             }
         }
         

@@ -126,6 +126,15 @@
   <data name="DescricaoMaximoCaracteres" xml:space="preserve">
     <value>O campo descrição tem no máximo 400 cacteres.</value>
   </data>
+  <data name="EmailInvalido" xml:space="preserve">
+    <value>O campo email é inválido.</value>
+  </data>
+  <data name="EmailJaExiste" xml:space="preserve">
+    <value>Este email já existe no sistema.</value>
+  </data>
+  <data name="EmailObrigatorio" xml:space="preserve">
+    <value>O campo email é obrigatório.</value>
+  </data>
   <data name="ErroDataPrevistaVazia" xml:space="preserve">
     <value>A data prevista não pode ficar vazia.</value>
   </data>
@@ -137,6 +146,15 @@
   </data>
   <data name="ErroStatusDataConclusao" xml:space="preserve">
     <value>O status deve ser indicado como concluído caso tenha preenchido a data realizada.</value>
+  </data>
+  <data name="NomeVazio" xml:space="preserve">
+    <value>O Campo nome nao pode ficar vazio.</value>
+  </data>
+  <data name="PasswordInvalido" xml:space="preserve">
+    <value>O campo password é inválido.</value>
+  </data>
+  <data name="PasswordObrigatorio" xml:space="preserve">
+    <value>O campo password é obrigatório.</value>
   </data>
   <data name="ProblemaConverterTarefa" xml:space="preserve">
     <value>Problema ao converter a tarefa.</value>

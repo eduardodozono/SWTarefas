@@ -6,5 +6,6 @@ namespace SWTarefas.Infrastructure.DataAcess.Interfaces.Usuarios
     {
         public Task<Usuario?> ExistsUsuarioByEmailAndPassword(string email, string password, CancellationToken token = default);
         public Task<bool> ExistsActiveUserWithIdentifier(Guid identifier, CancellationToken token = default);
+        public Task<bool> ExistsUsuarioByEmail(string email, CancellationToken token = default);
     }
 }
