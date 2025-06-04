@@ -133,6 +133,15 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Recurso não disponível..
+        /// </summary>
+        public static string RecursoNaoDisponivel {
+            get {
+                return ResourceManager.GetString("RecursoNaoDisponivel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Status deve ser (1 - concluído) quando a data realizada estiver preenchida..
         /// </summary>
         public static string StatusConcluidoErroApiDataRealizada {
@@ -201,6 +210,24 @@ namespace SWTarefas.Resources.Resources {
         public static string TituloVazio {
             get {
                 return ResourceManager.GetString("TituloVazio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Token expirado..
+        /// </summary>
+        public static string TokenEspirado {
+            get {
+                return ResourceManager.GetString("TokenEspirado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Token não encontrado..
+        /// </summary>
+        public static string TokenNaoEncontrado {
+            get {
+                return ResourceManager.GetString("TokenNaoEncontrado", resourceCulture);
             }
         }
     }

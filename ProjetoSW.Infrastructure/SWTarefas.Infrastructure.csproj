@@ -25,6 +25,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="SWTarefas.Tests"/>
+		<InternalsVisibleTo Include="SWTarefas.Tests" />
 	</ItemGroup>
 </Project>

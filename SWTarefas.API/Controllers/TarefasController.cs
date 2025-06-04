@@ -10,6 +10,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(CreateTarefaResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(CreateTarefaResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Create([FromServices] ICreateTarefaUseCase _createTarefaUseCase, CreateTarefaRequest request, CancellationToken token = default)
         {
             var result = await _createTarefaUseCase.Execute(request, token);
@@ -21,6 +22,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Delete([FromServices] IDeleteTarefasUseCase _deleteTarefasUseCase, int tarefaId, CancellationToken token = default)
         {
             await _deleteTarefasUseCase.Execute(tarefaId, token);
@@ -32,6 +34,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(UpdateTarefaResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(UpdateTarefaResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Update([FromServices] IUpdateTarefasUseCase _updateTarefasUseCase, UpdateTarefaRequest request, CancellationToken token = default)
         {
             var result = await _updateTarefasUseCase.Execute(request, token);
@@ -44,6 +47,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(GetAllTarefaResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(GetAllTarefaResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetAll([FromServices] IGetAllTarefasUseCase _getAllTarefasUseCase, CancellationToken token = default)
         {
             var result = await _getAllTarefasUseCase.Execute(token);
@@ -60,6 +64,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetById([FromServices] IGetByIdTarefasUseCase _getByIdTarefasUseCase, int tarefaId, CancellationToken token = default)
         {
             var result = await _getByIdTarefasUseCase.Execute(tarefaId, token);
