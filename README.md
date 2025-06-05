@@ -2,6 +2,7 @@
 Projeto está dividido em:
 1. SWTarefas.API<br/>
 Este projeto contém as apis em rest com os endpoints para a criação, alteração, exclusão e consultas das tarefas existentes.
+Para poder usar a api precisa ser criado um usuário no endpoint(/usuarios) e usar o email e senha no endpoint(/usuarios/login) para obter o token de acesso.
 3. SWTarefas.Application<br/>
 Este projeto contém as regras de negócio das apis e do site.
 4. SWTarefas.CrossCutting<br/>
