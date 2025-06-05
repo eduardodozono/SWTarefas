@@ -17,6 +17,8 @@ Este projeto contém os resources de erros da api, site e testes para validaçã
 Este projeto contém a apresentação para o usuário final das funcionalidades.
 9. SWTarefas.Tests<br/>
 Este projeto contém os testes da solução.
+10. Heathchecks
+Usar o endpoint(/health) para verificar o status da api.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Como testar:<br/>
 Para facilitar eu deixei preparado para um banco de dados em memória então para iniciar o teste é somente rodar o projeto desejado e iniciar os testes.<br/>
