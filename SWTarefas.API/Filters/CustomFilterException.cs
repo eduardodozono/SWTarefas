@@ -27,6 +27,14 @@ namespace SWTarefas.API.Filters
                     context.Result = new BadRequestObjectResult(exception._errors);
 
                     break;
+                case CustomUnauthorizedException:
+                    context.HttpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
+
+                    var exceptionUnauthorized = context.Exception as CustomUnauthorizedException;
+
+                    context.Result = new UnauthorizedObjectResult(exceptionUnauthorized._errors);
+
+                    break;
                 default:
                     OnExceptionInternalServerErrorHandler(context);
                     break;

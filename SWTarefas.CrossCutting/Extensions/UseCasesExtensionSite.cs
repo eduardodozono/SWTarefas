@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.Interfaces;
-using SWTarefas.Application.UsesCases.TarefasUseCasesSite;
+using SWTarefas.Application.UsesCases.TarefasUseCasesSite.UseCases.Read;
+using SWTarefas.Application.UsesCases.TarefasUseCasesSite.UseCases.Write;
 
 namespace SWTarefas.CrossCutting.Extensions
 {
