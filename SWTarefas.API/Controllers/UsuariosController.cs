@@ -11,7 +11,8 @@ namespace SWTarefas.API.Controllers
         [HttpPost("login")]
         [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Login([FromServices] ILoginUsuariosUseCase loginUsuariosUseCase, [FromBody] UsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
             var result = await loginUsuariosUseCase.Execute(request);
@@ -22,7 +23,8 @@ namespace SWTarefas.API.Controllers
         [HttpPost()]
         [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Create([FromServices] ICreateLoginUsuariosUseCase loginUsuariosUseCaseCreate, [FromBody] CreateUsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
             var result = await loginUsuariosUseCaseCreate.Execute(request, token);

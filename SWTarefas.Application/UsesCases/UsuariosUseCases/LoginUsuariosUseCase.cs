@@ -5,6 +5,7 @@ using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.Validations;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.Usuarios;
 using SWTarefas.Infrastructure.Security.Tokens.Acess.Interfaces;
+using SWTarefas.Resources.Resources;
 
 namespace SWTarefas.Application.UsesCases.UsuariosUseCases
 {
@@ -28,7 +29,7 @@ namespace SWTarefas.Application.UsesCases.UsuariosUseCases
             var usuarioDomain = await _usuarioReadRepository.ExistsUsuarioByEmailAndPassword(request.Email, _customEncripter.Encrypt(request.Password), token);
 
             if (usuarioDomain == null)
-                throw new Exception();
+                throw new CustomUnauthorizedException(SWTarefasMessagesExceptions.UsuarioSenhaIncorretos);
             // construir uma nova excetion
             // tratar essa execetion no filtro da api
 
@@ -45,8 +46,6 @@ namespace SWTarefas.Application.UsesCases.UsuariosUseCases
 
             if (!resultValidation.IsValid)
                 throw new CustomBadRequestException(resultValidation.Errors.Select(erros => erros.ErrorMessage).ToList());
-            // construir uma nova excetion
-            // tratar essa execetion no filtro da api
         }
     }
 }

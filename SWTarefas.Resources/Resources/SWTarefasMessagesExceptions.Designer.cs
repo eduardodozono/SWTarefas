@@ -115,6 +115,15 @@ namespace SWTarefas.Resources.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O campo email não pode ficar vazio..
+        /// </summary>
+        public static string EmailVazio {
+            get {
+                return ResourceManager.GetString("EmailVazio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A data prevista não pode ficar vazia..
         /// </summary>
         public static string ErroDataPrevistaVazia {
@@ -282,6 +291,15 @@ namespace SWTarefas.Resources.Resources {
         public static string TokenNaoEncontrado {
             get {
                 return ResourceManager.GetString("TokenNaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário ou senha incorretos..
+        /// </summary>
+        public static string UsuarioSenhaIncorretos {
+            get {
+                return ResourceManager.GetString("UsuarioSenhaIncorretos", resourceCulture);
             }
         }
     }

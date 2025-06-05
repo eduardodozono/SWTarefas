@@ -135,6 +135,9 @@
   <data name="EmailObrigatorio" xml:space="preserve">
     <value>O campo email é obrigatório.</value>
   </data>
+  <data name="EmailVazio" xml:space="preserve">
+    <value>O campo email não pode ficar vazio.</value>
+  </data>
   <data name="ErroDataPrevistaVazia" xml:space="preserve">
     <value>A data prevista não pode ficar vazia.</value>
   </data>
@@ -191,5 +194,8 @@
   </data>
   <data name="TokenNaoEncontrado" xml:space="preserve">
     <value>Token não encontrado.</value>
+  </data>
+  <data name="UsuarioSenhaIncorretos" xml:space="preserve">
+    <value>Usuário ou senha incorretos.</value>
   </data>
 </root>

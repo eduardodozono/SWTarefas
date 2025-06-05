@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SWTarefas.Application.UsesCases.TarefasUseCases;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces;
+using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Delete;
+using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read;
+using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write;
 using SWTarefas.Application.UsesCases.UsuariosUseCases;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces;
 
