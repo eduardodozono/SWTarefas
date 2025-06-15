@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.UsuariosUseCases;
+using SWTarefas.Infrastructure.DataAcess.Interfaces.Usuarios;
 using SWTarefas.Resources.Resources;
 using SWTarefas.Tests.TestsMoq.Common.Cryptography;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Usuarios;
@@ -15,17 +16,11 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Usuarios.Write
         [Fact]
         public async Task Success()
         {
-            var usuarioWriteRepository = UsuarioWriteRepositoryBuilder.Build();
             var usuarioReadRepository = UsuarioReadRepositoryBuilder.Build(false, true);
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var customEncripter = CustomEncripterBuilder.Build();
-            var jwtTokenGenerator = JwtTokenGeneratorBuilder.Build();
-
-            var createLoginUsuariosUseCase = new CreateLoginUsuariosUseCase(usuarioWriteRepository, usuarioReadRepository, unitOfWork, customEncripter, jwtTokenGenerator);
 
             var createUsuariosLoginUseCaseRequest = CreateUsuariosLoginUseCaseRequestBuilder.Build();
 
-            var result = await createLoginUsuariosUseCase.Execute(createUsuariosLoginUseCaseRequest);
+            var result = await CreateUseCase(usuarioReadRepository).Execute(createUsuariosLoginUseCaseRequest);
 
             result.Should().NotBeNull();
             result.AcessToken.Should().NotBeNullOrWhiteSpace();
@@ -35,17 +30,11 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Usuarios.Write
         [Fact]
         public async Task Error_Email_Ja_Cadastrado()
         {
-            var usuarioWriteRepository = UsuarioWriteRepositoryBuilder.Build();
             var usuarioReadRepository = UsuarioReadRepositoryBuilder.Build(true, true);
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var customEncripter = CustomEncripterBuilder.Build();
-            var jwtTokenGenerator = JwtTokenGeneratorBuilder.Build();
-
-            var createLoginUsuariosUseCase = new CreateLoginUsuariosUseCase(usuarioWriteRepository, usuarioReadRepository, unitOfWork, customEncripter, jwtTokenGenerator);
 
             var createUsuariosLoginUseCaseRequest = CreateUsuariosLoginUseCaseRequestBuilder.Build();
 
-            Func<Task> result = async () => await createLoginUsuariosUseCase.Execute(createUsuariosLoginUseCaseRequest);
+            Func<Task> result = async () => await CreateUseCase(usuarioReadRepository).Execute(createUsuariosLoginUseCaseRequest);
 
             (await result.Should().ThrowAsync<CustomBadRequestException>()).And._errors.Contains(SWTarefasMessagesExceptions.EmailJaExiste);
         }
@@ -53,17 +42,10 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Usuarios.Write
         [Fact]
         public async Task Error_Email_Vazio()
         {
-            var usuarioWriteRepository = UsuarioWriteRepositoryBuilder.Build();
             var usuarioReadRepository = UsuarioReadRepositoryBuilder.Build(false, true);
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var customEncripter = CustomEncripterBuilder.Build();
-            var jwtTokenGenerator = JwtTokenGeneratorBuilder.Build();
-
-            var createLoginUsuariosUseCase = new CreateLoginUsuariosUseCase(usuarioWriteRepository, usuarioReadRepository, unitOfWork, customEncripter, jwtTokenGenerator);
-
             var createUsuariosLoginUseCaseRequest = CreateUsuariosLoginUseCaseRequestBuilder.Build_Email_Vazio();
 
-            Func<Task> result = async () => await createLoginUsuariosUseCase.Execute(createUsuariosLoginUseCaseRequest);
+            Func<Task> result = async () => await CreateUseCase(usuarioReadRepository).Execute(createUsuariosLoginUseCaseRequest);
 
             (await result.Should().ThrowAsync<CustomBadRequestException>()).And._errors.Contains(SWTarefasMessagesExceptions.EmailObrigatorio);
         }
@@ -71,17 +53,10 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Usuarios.Write
         [Fact]
         public async Task Error_Email_Invalido()
         {
-            var usuarioWriteRepository = UsuarioWriteRepositoryBuilder.Build();
             var usuarioReadRepository = UsuarioReadRepositoryBuilder.Build(false, true);
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var customEncripter = CustomEncripterBuilder.Build();
-            var jwtTokenGenerator = JwtTokenGeneratorBuilder.Build();
-
-            var createLoginUsuariosUseCase = new CreateLoginUsuariosUseCase(usuarioWriteRepository, usuarioReadRepository, unitOfWork, customEncripter, jwtTokenGenerator);
-
             var createUsuariosLoginUseCaseRequest = CreateUsuariosLoginUseCaseRequestBuilder.Build_Email_Invalido();
 
-            Func<Task> result = async () => await createLoginUsuariosUseCase.Execute(createUsuariosLoginUseCaseRequest);
+            Func<Task> result = async () => await CreateUseCase(usuarioReadRepository).Execute(createUsuariosLoginUseCaseRequest);
 
             (await result.Should().ThrowAsync<CustomBadRequestException>()).And._errors.Contains(SWTarefasMessagesExceptions.EmailInvalido);
         }
@@ -89,17 +64,10 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Usuarios.Write
         [Fact]
         public async Task Error_Senha_Vazia()
         {
-            var usuarioWriteRepository = UsuarioWriteRepositoryBuilder.Build();
             var usuarioReadRepository = UsuarioReadRepositoryBuilder.Build(false, true);
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var customEncripter = CustomEncripterBuilder.Build();
-            var jwtTokenGenerator = JwtTokenGeneratorBuilder.Build();
-
-            var createLoginUsuariosUseCase = new CreateLoginUsuariosUseCase(usuarioWriteRepository, usuarioReadRepository, unitOfWork, customEncripter, jwtTokenGenerator);
-
             var createUsuariosLoginUseCaseRequest = CreateUsuariosLoginUseCaseRequestBuilder.Build_Senha_Vazia();
 
-            Func<Task> result = async () => await createLoginUsuariosUseCase.Execute(createUsuariosLoginUseCaseRequest);
+            Func<Task> result = async () => await CreateUseCase(usuarioReadRepository).Execute(createUsuariosLoginUseCaseRequest);
 
             (await result.Should().ThrowAsync<CustomBadRequestException>()).And._errors.Contains(SWTarefasMessagesExceptions.PasswordObrigatorio);
         }
@@ -120,6 +88,16 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Usuarios.Write
             Func<Task> result = async () => await createLoginUsuariosUseCase.Execute(createUsuariosLoginUseCaseRequest);
 
             (await result.Should().ThrowAsync<CustomBadRequestException>()).And._errors.Contains(SWTarefasMessagesExceptions.PasswordInvalido);
+        }
+
+        private static CreateLoginUsuariosUseCase CreateUseCase(IUsuarioReadRepository usuarioReadRepository)
+        {
+            var usuarioWriteRepository = UsuarioWriteRepositoryBuilder.Build();
+            var unitOfWork = UnitOfWorkBuilder.Build();
+            var customEncripter = CustomEncripterBuilder.Build();
+            var jwtTokenGenerator = JwtTokenGeneratorBuilder.Build();
+
+            return new CreateLoginUsuariosUseCase(usuarioWriteRepository, usuarioReadRepository, unitOfWork, customEncripter, jwtTokenGenerator);
         }
     }
 }

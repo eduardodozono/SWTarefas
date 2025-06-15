@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read;
+using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.AutoMapper;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.Repositories.Tarefas;
@@ -11,17 +12,11 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Read
         [Fact]
         public async Task Sucess()
         {
-            var mapper = AutoMapperBuilder.Build();
-
             var listaTarefas = TarefasListBuilder.Build();
-
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente();
-
             var tarefaReadRepository = TarefaReadRepositoryBuilder.Build(listaTarefas, tarefa);
 
-            var getByIdTarefasUseCase = new GetByIdTarefasUseCase(tarefaReadRepository, mapper);
-
-            var result = await getByIdTarefasUseCase.Execute(1);
+            var result = await CreateUseCase(tarefaReadRepository).Execute(1);
 
             result.Should().NotBeNull();
             result.Titulo.Should().Be(tarefa.Titulo);
@@ -32,15 +27,18 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Read
         [Fact]
         public async Task Error_Tarefa_Nao_Existe()
         {
-            var mapper = AutoMapperBuilder.Build();
-
             var tarefaReadRepository = TarefaReadRepositoryBuilder.Build(null, null);
 
-            var getByIdTarefasUseCase = new GetByIdTarefasUseCase(tarefaReadRepository, mapper);
-
-            var result = await getByIdTarefasUseCase.Execute(1);
+            var result = await CreateUseCase(tarefaReadRepository).Execute(1);
 
             result.Should().BeNull();
+        }
+
+        private static GetByIdTarefasUseCase CreateUseCase(ITarefaReadRepository tarefaReadRepository)
+        {
+            var mapper = AutoMapperBuilder.Build();
+
+            return new GetByIdTarefasUseCase(tarefaReadRepository, mapper);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas
 {
     public static class TarefasListBuilder
     {
-        public static List<Tarefa> Build()
+        public static IList<Tarefa> Build()
         {
             var listaTarefas = new List<Tarefa>();
 

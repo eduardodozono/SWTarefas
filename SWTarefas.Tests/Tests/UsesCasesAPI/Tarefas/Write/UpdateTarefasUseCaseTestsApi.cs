@@ -12,13 +12,13 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 
 namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Tarefas.Write
 {
-    public class UpdateTarefasUseCaseTestsApi_Better : IClassFixture<CustomWebApplicationFactory>
+    public class UpdateTarefasUseCaseTestsApi : IClassFixture<CustomWebApplicationFactory>
     {
         private readonly HttpClient _httpClient;
         private readonly string _urlEndPoint = "tarefas";
         private readonly CustomWebApplicationFactory _factory;
 
-        public UpdateTarefasUseCaseTestsApi_Better(CustomWebApplicationFactory factory)
+        public UpdateTarefasUseCaseTestsApi(CustomWebApplicationFactory factory)
         {
             _httpClient = factory.CreateClient();
             _factory = factory;

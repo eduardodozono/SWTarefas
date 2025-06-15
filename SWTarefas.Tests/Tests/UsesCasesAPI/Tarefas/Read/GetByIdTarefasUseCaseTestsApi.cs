@@ -2,22 +2,21 @@
 using System.Net;
 using FluentAssertions;
 using Newtonsoft.Json;
-using SWTarefas.Resources.Resources;
 using SWTarefas.Tests.TestsMoq.Common.UtilsApi;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 
 namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Tarefas.Read
 {
-    public class GetAllTarefasUseCaseTestsApi_Better : IClassFixture<CustomWebApplicationFactory>
+    public class GetByIdTarefasUseCaseTestsApi : IClassFixture<CustomWebApplicationFactory>
     {
         private readonly HttpClient _httpClient;
         private readonly string _urlEndPoint = "tarefas";
         private readonly CustomWebApplicationFactory _factory;
 
-        public GetAllTarefasUseCaseTestsApi_Better(CustomWebApplicationFactory factory)
+        public GetByIdTarefasUseCaseTestsApi(CustomWebApplicationFactory factory)
         {
-            _factory = factory;
             _httpClient = factory.CreateClient();
+            _factory = factory;
         }
 
         [Fact]
@@ -27,37 +26,39 @@ namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Tarefas.Read
 
             var listaTarefas = await UtilsApi.Start_TarefasList(_factory);
 
+            string urlIdEndPoint = $"/{_urlEndPoint}/{listaTarefas[0].TarefaId}";
+
             UtilsApi.AddTokenHeader(_httpClient, listaUsuarios[0]);
 
-            var result = await _httpClient.GetAsync(_urlEndPoint);
+            var result = await _httpClient.GetAsync(urlIdEndPoint);
 
             var responseBody = await result.Content.ReadAsStringAsync();
 
-            var responseData = JsonConvert.DeserializeObject<IEnumerable<GetAllTarefaResponse>?>(responseBody);
+            var responseData = JsonConvert.DeserializeObject<GetByIdTarefaResponse?>(responseBody);
 
             result.StatusCode.Should().Be(HttpStatusCode.OK);
-
-            responseData.Should().NotBeNullOrEmpty();
-            responseData.Should().HaveCountGreaterThan(1);
+            responseData.Should().NotBeNull();
         }
 
         [Fact]
         public async Task Success_No_Content()
         {
-            await TarefasDataBaseUtils.DeleteAllTarefas(_factory);
+            string urlIdEndPoint = $"/{_urlEndPoint}/0";
 
             var listaUsuarios = await UtilsApi.Start_UsuarioList(_factory);
 
+            var listaTarefas = await UtilsApi.Start_TarefasList(_factory);
+
             UtilsApi.AddTokenHeader(_httpClient, listaUsuarios[0]);
 
-            var result = await _httpClient.GetAsync(_urlEndPoint);
+            var result = await _httpClient.GetAsync(urlIdEndPoint);
 
             var responseBody = await result.Content.ReadAsStringAsync();
 
-            var responseData = JsonConvert.DeserializeObject<IEnumerable<GetAllTarefaResponse>?>(responseBody);
+            var responseData = JsonConvert.DeserializeObject<GetByIdTarefaResponse?>(responseBody);
 
             result.StatusCode.Should().Be(HttpStatusCode.NoContent);
-            responseData.Should().BeNull(SWTarefasMessagesExceptions.TarefaNaoExiste);
+            responseData.Should().BeNull();
         }
     }
 }
