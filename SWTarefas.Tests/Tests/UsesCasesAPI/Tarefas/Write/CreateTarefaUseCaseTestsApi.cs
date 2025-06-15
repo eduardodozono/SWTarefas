@@ -13,13 +13,13 @@ using SWTarefas.Tests.TestsMoq.Common.UtilsApi;
 
 namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Tarefas.Write
 {
-    public class CreateTarefaUseCaseTestsApi_Better : IClassFixture<CustomWebApplicationFactory>
+    public class CreateTarefaUseCaseTestsApi : IClassFixture<CustomWebApplicationFactory>
     {
         private readonly HttpClient _httpClient;
         private readonly string _urlEndPoint = "tarefas";
         private readonly CustomWebApplicationFactory _factory;
 
-        public CreateTarefaUseCaseTestsApi_Better(CustomWebApplicationFactory factory)
+        public CreateTarefaUseCaseTestsApi(CustomWebApplicationFactory factory)
         {
             _httpClient = factory.CreateClient();
             _factory = factory;

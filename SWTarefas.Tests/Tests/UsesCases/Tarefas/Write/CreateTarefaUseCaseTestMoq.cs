@@ -2,6 +2,7 @@
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write;
+using SWTarefas.Domain.Entities;
 using SWTarefas.Tests.TestsMoq.Common.AutoMapper;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.Repositories.Tarefas;
@@ -15,14 +16,9 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Write
         {
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente();
             var mapper = AutoMapperBuilder.Build();
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var tarefaWriteRepository = TarefaWriteRepositoryBuilder.Build(tarefa);
-
-            var createTarefaUseCase = new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
-
             var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
 
-            var result = await createTarefaUseCase.Execute(tarefaRequest);
+            var result = await CreateUseCase(tarefa).Execute(tarefaRequest);
 
             result.Should().NotBeNull();
             result.Titulo.Should().Be(tarefa.Titulo);
@@ -34,14 +30,9 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Write
         {
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente_Titulo_Vazio();
             var mapper = AutoMapperBuilder.Build();
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var tarefaWriteRepository = TarefaWriteRepositoryBuilder.Build(tarefa);
-
-            var createTarefaUseCase = new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
-
             var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
 
-            Func<Task> act = async () => await createTarefaUseCase.Execute(tarefaRequest);
+            Func<Task> act = async () => await CreateUseCase(tarefa).Execute(tarefaRequest);
 
             await act.Should().ThrowAsync<CustomBadRequestException>();
         }
@@ -51,14 +42,9 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Write
         {
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente_Titulo_Tamanho_Max();
             var mapper = AutoMapperBuilder.Build();
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var tarefaWriteRepository = TarefaWriteRepositoryBuilder.Build(tarefa);
-
-            var createTarefaUseCase = new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
-
             var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
 
-            Func<Task> act = async () => await createTarefaUseCase.Execute(tarefaRequest);
+            Func<Task> act = async () => await CreateUseCase(tarefa).Execute(tarefaRequest);
 
             await act.Should().ThrowAsync<CustomBadRequestException>();
         }
@@ -68,14 +54,9 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Write
         {
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente_Descricao_Tamanho_Max();
             var mapper = AutoMapperBuilder.Build();
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var tarefaWriteRepository = TarefaWriteRepositoryBuilder.Build(tarefa);
-
-            var createTarefaUseCase = new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
-
             var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
 
-            Func<Task> act = async () => await createTarefaUseCase.Execute(tarefaRequest);
+            Func<Task> act = async () => await CreateUseCase(tarefa).Execute(tarefaRequest);
 
             await act.Should().ThrowAsync<CustomBadRequestException>();
         }
@@ -85,14 +66,9 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Write
         {
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente_Data_Prevista_Vazia();
             var mapper = AutoMapperBuilder.Build();
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var tarefaWriteRepository = TarefaWriteRepositoryBuilder.Build(tarefa);
-
-            var createTarefaUseCase = new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
-
             var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
 
-            Func<Task> act = async () => await createTarefaUseCase.Execute(tarefaRequest);
+            Func<Task> act = async () => await CreateUseCase(tarefa).Execute(tarefaRequest);
 
             await act.Should().ThrowAsync<CustomBadRequestException>();
         }
@@ -102,14 +78,9 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Write
         {
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente_Status_Vazio();
             var mapper = AutoMapperBuilder.Build();
-            var unitOfWork = UnitOfWorkBuilder.Build();
-            var tarefaWriteRepository = TarefaWriteRepositoryBuilder.Build(tarefa);
-
-            var createTarefaUseCase = new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
-
             var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
 
-            Func<Task> act = async () => await createTarefaUseCase.Execute(tarefaRequest);
+            Func<Task> act = async () => await CreateUseCase(tarefa).Execute(tarefaRequest);
 
             await act.Should().ThrowAsync<CustomBadRequestException>();
         }
@@ -119,16 +90,21 @@ namespace SWTarefas.Tests.TestsMoq.UsesCases.Tarefas.Write
         {
             var tarefa = TarefasBuilder.Build_Tarefa_Pendente_Status_Invalido();
             var mapper = AutoMapperBuilder.Build();
+            var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
+
+            Func<Task> act = async () => await CreateUseCase(tarefa).Execute(tarefaRequest);
+
+            await act.Should().ThrowAsync<CustomBadRequestException>();
+        }
+
+        private static CreateTarefaUseCase CreateUseCase(Tarefa tarefa)
+        {
+            var mapper = AutoMapperBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
             var tarefaWriteRepository = TarefaWriteRepositoryBuilder.Build(tarefa);
 
-            var createTarefaUseCase = new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
+            return new CreateTarefaUseCase(tarefaWriteRepository, unitOfWork, mapper);
 
-            var tarefaRequest = mapper.Map<CreateTarefaRequest>(tarefa);
-
-            Func<Task> act = async () => await createTarefaUseCase.Execute(tarefaRequest);
-
-            await act.Should().ThrowAsync<CustomBadRequestException>();
         }
     }
 }
