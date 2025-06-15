@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using SWTarefas.Application.Exceptions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write;
 using SWTarefas.Tests.TestsMoq.Common.AutoMapper;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;

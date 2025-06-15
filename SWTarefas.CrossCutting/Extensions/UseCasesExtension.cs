@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Delete;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write;
@@ -17,7 +19,8 @@ namespace SWTarefas.CrossCutting.Extensions
             services.AddScoped<IUpdateTarefasUseCase, UpdateTarefasUseCase>();
             services.AddScoped<IGetAllTarefasUseCase, GetAllTarefasUseCase>();
             services.AddScoped<IGetByIdTarefasUseCase, GetByIdTarefasUseCase>();
-
+            services.AddScoped<IFilterTarefasUseCase, FilterTarefasUseCase>();
+            
             services.AddScoped<ILoginUsuariosUseCase, LoginUsuariosUseCase>();
             services.AddScoped<ICreateLoginUsuariosUseCase, CreateLoginUsuariosUseCase>();
 

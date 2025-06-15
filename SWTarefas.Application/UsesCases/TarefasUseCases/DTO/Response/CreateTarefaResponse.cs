@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Base;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response
 {
     public class CreateTarefaResponse : TarefaBaseUseCase
     {

@@ -52,7 +52,7 @@ namespace SWTarefas.API.Filters
             var authentication = context.HttpContext.Request.Headers.Authorization.ToString();
 
             if (string.IsNullOrEmpty(authentication))
-                throw new BaseCustomException(SWTarefasMessagesExceptions.TokenNaoEncontrado);
+                throw new CustomUnauthorizedException(SWTarefasMessagesExceptions.TokenNaoEncontrado);
 
             return authentication["Bearer ".Length..].Trim();
         }

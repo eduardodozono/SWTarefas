@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write;
 
 namespace SWTarefas.API.Controllers
 {
@@ -52,12 +56,27 @@ namespace SWTarefas.API.Controllers
         {
             var result = await _getAllTarefasUseCase.Execute(token);
 
-            if (result == null || result.Count() == 0)
+            if (result == null || !result.Any())
                 return NoContent();
 
             return Ok(result);
         }
 
+        [HttpPost("filter")]
+        [ProducesResponseType(typeof(GetAllTarefaResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetAllTarefaResponse), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(GetAllTarefaResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Filter([FromServices] IFilterTarefasUseCase _filterTarefasUseCase, FilterTarefaRequest request, CancellationToken token = default)
+        {
+            var result = await _filterTarefasUseCase.Execute(request, token);
+
+            if (result == null || !result.Any())
+                return NoContent();
+
+            return Ok(result);
+        }
 
         [HttpGet("{tarefaId:int}")]
         [ProducesResponseType(typeof(GetByIdTarefaResponse), StatusCodes.Status200OK)]

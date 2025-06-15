@@ -1,4 +1,6 @@
-﻿namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO
+﻿using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Base;
+
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request
 {
     public class UpdateTarefaRequest : TarefaBaseUseCase
     {

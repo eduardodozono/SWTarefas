@@ -2,8 +2,9 @@
 using System.Net.Http.Json;
 using FluentAssertions;
 using Newtonsoft.Json;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 using SWTarefas.Resources.Resources;
 using SWTarefas.Tests.TestsMoq.Common.AutoMapper;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;

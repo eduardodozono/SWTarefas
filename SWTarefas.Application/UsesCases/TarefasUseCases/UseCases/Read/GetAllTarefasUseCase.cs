@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read

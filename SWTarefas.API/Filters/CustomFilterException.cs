@@ -9,36 +9,17 @@ namespace SWTarefas.API.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            if (context.Exception is BaseCustomException)
-                OnExceptionCustomHandler(context);
+            if (context.Exception is BaseCustomException customException)
+                OnExceptionCustomHandler(context, customException);
             else
                 OnExceptionInternalServerErrorHandler(context);
         }
 
-        public void OnExceptionCustomHandler(ExceptionContext context)
+        public void OnExceptionCustomHandler(ExceptionContext context, BaseCustomException customException)
         {
-            switch (context.Exception)
-            {
-                case CustomBadRequestException:
-                    context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+            context.HttpContext.Response.StatusCode = (int)customException.GetStatusCode();
 
-                    var exception = context.Exception as CustomBadRequestException;
-
-                    context.Result = new BadRequestObjectResult(exception._errors);
-
-                    break;
-                case CustomUnauthorizedException:
-                    context.HttpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
-
-                    var exceptionUnauthorized = context.Exception as CustomUnauthorizedException;
-
-                    context.Result = new UnauthorizedObjectResult(exceptionUnauthorized._errors);
-
-                    break;
-                default:
-                    OnExceptionInternalServerErrorHandler(context);
-                    break;
-            }
+            context.Result = new ObjectResult(customException.GetErrors());
         }
 
         public void OnExceptionInternalServerErrorHandler(ExceptionContext context)

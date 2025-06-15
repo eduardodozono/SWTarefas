@@ -1,6 +1,6 @@
-﻿using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
+﻿using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read
 {
     public interface IGetAllTarefasUseCase
     {

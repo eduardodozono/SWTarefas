@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using SWTarefas.Application.Exceptions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Validations;
 using SWTarefas.Domain.Entities;
 using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;

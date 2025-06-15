@@ -1,4 +1,6 @@
-﻿namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO
+﻿using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Base;
+
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response
 {
     public class GetAllTarefaResponse : TarefaBaseUseCase
     {
