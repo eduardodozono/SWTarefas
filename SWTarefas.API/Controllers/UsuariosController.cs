@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.DTO;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces;
 
@@ -10,8 +11,8 @@ namespace SWTarefas.API.Controllers
     {
         [HttpPost("login")]
         [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(CustomBadRequestException), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(CustomUnauthorizedException), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Login([FromServices] ILoginUsuariosUseCase loginUsuariosUseCase, [FromBody] UsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
@@ -22,8 +23,8 @@ namespace SWTarefas.API.Controllers
 
         [HttpPost()]
         [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(CreateUsuariosLoginUseCaseResponse), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(CustomBadRequestException), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(CustomUnauthorizedException), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Create([FromServices] ICreateLoginUsuariosUseCase loginUsuariosUseCaseCreate, [FromBody] CreateUsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
