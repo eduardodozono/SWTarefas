@@ -7,7 +7,7 @@
         public string? Descricao { get; init; }
         public DateOnly? DataConclusaoPrevista { get; init; } = null;
         public DateOnly? DataConclusaoRealizada { get; init; } = null;
-        public int Status { get; init; }
+        public int Status { get; init; }        
 
         public Tarefa() { }
 

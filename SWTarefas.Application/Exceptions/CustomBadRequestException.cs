@@ -1,4 +1,6 @@
-﻿namespace SWTarefas.Application.Exceptions
+﻿using System.Net;
+
+namespace SWTarefas.Application.Exceptions
 {
     public class CustomBadRequestException : BaseCustomException
     {
@@ -12,5 +14,8 @@
         {
             _errors.Add(error);
         }
+
+        public override IList<string> GetErrors() => _errors;
+        public override HttpStatusCode GetStatusCode() => HttpStatusCode.BadRequest;
     }
 }

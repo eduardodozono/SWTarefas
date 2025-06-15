@@ -1,10 +1,10 @@
 ﻿using ProjetoSW.Infrastructure.DataAcess.Repository.UnitOfWork;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using SWTarefas.Infrastructure.DataAcess.Repository.Tarefas;
 using FluentAssertions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Delete;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 
 namespace SWTarefas.Tests.Tests.TarefasUsesCases
 {

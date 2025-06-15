@@ -1,7 +1,8 @@
 ﻿using System.Text.Json.Serialization;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Base;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request
 {
     public class CreateTarefaRequest : TarefaBaseUseCase
     {

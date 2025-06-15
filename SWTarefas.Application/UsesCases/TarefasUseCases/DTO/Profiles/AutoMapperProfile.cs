@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel;
+using SWTarefas.Domain.DTO.Tarefas;
 using SWTarefas.Domain.Entities;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Profiles
@@ -8,26 +11,29 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Profiles
     {
         public AutoMapperProfile()
         {
-            CreateMap<Tarefa, CreateTarefaRequest>().ReverseMap();
-            CreateMap<CreateTarefaRequest, Tarefa>().ReverseMap();
+            CreateMap<Tarefa, CreateTarefaRequest>();
+            CreateMap<CreateTarefaRequest, Tarefa>();
 
-            CreateMap<Tarefa, CreateTarefaResponse>().ReverseMap();
-            CreateMap<CreateTarefaResponse, Tarefa>().ReverseMap();
+            CreateMap<Tarefa, CreateTarefaResponse>();
+            CreateMap<CreateTarefaResponse, Tarefa>();
 
-            CreateMap<Tarefa, UpdateTarefaResponse>().ReverseMap();
-            CreateMap<UpdateTarefaResponse, Tarefa>().ReverseMap();
+            CreateMap<Tarefa, UpdateTarefaResponse>();
+            CreateMap<UpdateTarefaResponse, Tarefa>();
 
-            CreateMap<Tarefa, UpdateTarefaRequest>().ReverseMap();
-            CreateMap<UpdateTarefaRequest, Tarefa>().ReverseMap();
+            CreateMap<Tarefa, UpdateTarefaRequest>();
+            CreateMap<UpdateTarefaRequest, Tarefa>();
 
-            CreateMap<Tarefa, GetAllTarefaResponse>().ReverseMap();
-            CreateMap<GetAllTarefaResponse, Tarefa>().ReverseMap();
+            CreateMap<Tarefa, GetAllTarefaResponse>();
+            CreateMap<GetAllTarefaResponse, Tarefa>();
 
-            CreateMap<Tarefa, GetByIdTarefaResponse>().ReverseMap();
-            CreateMap<GetByIdTarefaResponse, Tarefa>().ReverseMap();
+            CreateMap<Tarefa, GetByIdTarefaResponse>();
+            CreateMap<GetByIdTarefaResponse, Tarefa>();
 
-            CreateMap<Tarefa, TarefaViewModel>().ReverseMap();
-            CreateMap<TarefaViewModel, Tarefa>().ReverseMap();                       
+            CreateMap<Tarefa, TarefaViewModel>();
+            CreateMap<TarefaViewModel, Tarefa>();
+
+            CreateMap<FilterTarefa, FilterTarefaRequest>();
+            CreateMap<FilterTarefaRequest, FilterTarefa>();
         }
     }
 }

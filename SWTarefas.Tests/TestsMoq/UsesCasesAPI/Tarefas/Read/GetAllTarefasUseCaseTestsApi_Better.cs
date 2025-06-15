@@ -1,10 +1,10 @@
 ﻿using SWTarefas.Tests.TestsMoq.Common.HostApi;
 using System.Net;
 using FluentAssertions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using Newtonsoft.Json;
 using SWTarefas.Resources.Resources;
 using SWTarefas.Tests.TestsMoq.Common.UtilsApi;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 
 namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Tarefas.Read
 {

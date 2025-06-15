@@ -1,4 +1,4 @@
-﻿namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO
+﻿namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Base
 {
     public abstract class TarefaBaseUseCase
     {

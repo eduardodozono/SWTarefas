@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SWTarefas.Application.UsesCases.TarefasUseCases.DTO;
 using System.Net.Http.Json;
 using System.Net;
 using SWTarefas.Tests.TestsMoq.Common.HostApi;
@@ -8,6 +7,8 @@ using SWTarefas.Tests.TestsMoq.Common.AutoMapper;
 using SWTarefas.Resources.Resources;
 using SWTarefas.Tests.TestsMoq.Common.UtilsApi;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 
 namespace SWTarefas.Tests.TestsMoq.UsesCasesAPI.Tarefas.Write
 {

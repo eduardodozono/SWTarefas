@@ -1,7 +1,13 @@
-﻿namespace SWTarefas.Application.Exceptions
+﻿using System.Net;
+
+namespace SWTarefas.Application.Exceptions
 {
-    public class BaseCustomException : SystemException
+    public abstract class BaseCustomException : SystemException
     {
         public BaseCustomException(string message) : base(message) { }
+
+        public abstract HttpStatusCode GetStatusCode();
+
+        public abstract IList<string> GetErrors();
     }
 }
