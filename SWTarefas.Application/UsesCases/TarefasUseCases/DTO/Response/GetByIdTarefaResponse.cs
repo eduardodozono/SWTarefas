@@ -6,7 +6,7 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response
     {
         public int TarefaId { get; init; }
 
-        public GetByIdTarefaResponse(int tarefaId, string titulo, string? descricao, DateOnly? dataConclusaoPrevista, DateOnly? dataConclusaoRealizada, int status)
+        public GetByIdTarefaResponse(int tarefaId, string titulo, string? descricao, DateTime? dataConclusaoPrevista, DateTime? dataConclusaoRealizada, int status)
         {
             TarefaId = tarefaId;
             Titulo = titulo;

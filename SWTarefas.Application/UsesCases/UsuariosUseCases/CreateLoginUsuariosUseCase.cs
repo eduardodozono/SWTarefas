@@ -4,8 +4,8 @@ using SWTarefas.Application.UsesCases.UsuariosUseCases.DTO;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.Validations;
 using SWTarefas.Domain.Entities;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.UnitOfWork;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Usuarios;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Usuarios;
 using SWTarefas.Infrastructure.Security.Tokens.Acess.Interfaces;
 using SWTarefas.Resources.Resources;
 

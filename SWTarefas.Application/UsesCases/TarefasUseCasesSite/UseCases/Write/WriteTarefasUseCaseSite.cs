@@ -2,8 +2,8 @@
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.Interfaces;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel;
 using SWTarefas.Domain.Entities;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
 
 namespace SWTarefas.Application.UsesCases.TarefasUseCasesSite.UseCases.Write
 {

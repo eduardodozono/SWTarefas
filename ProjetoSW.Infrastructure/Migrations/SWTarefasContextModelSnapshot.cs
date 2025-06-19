@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SWTarefas.Infrastructure.DataAcess;
+using SWTarefas.Infrastructure.DataAcess.EF;
 
 #nullable disable
 
@@ -30,11 +30,11 @@ namespace SWTarefas.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TarefaId"));
 
-                    b.Property<DateOnly?>("DataConclusaoPrevista")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("DataConclusaoPrevista")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateOnly?>("DataConclusaoRealizada")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("DataConclusaoRealizada")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
                         .HasMaxLength(400)

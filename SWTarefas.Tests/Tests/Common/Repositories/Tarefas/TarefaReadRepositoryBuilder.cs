@@ -1,7 +1,7 @@
 ﻿using Moq;
 using SWTarefas.Domain.DTO.Tarefas;
 using SWTarefas.Domain.Entities;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 
 namespace SWTarefas.Tests.TestsMoq.Common.Repositories.Tarefas
 {

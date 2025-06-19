@@ -8,7 +8,7 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request
 
         public UpdateTarefaRequest() { }
 
-        public UpdateTarefaRequest(int tarefaId, string titulo, string? descricao, DateOnly? dataConclusaoPrevista, DateOnly? dataConclusaoRealizada, int status)
+        public UpdateTarefaRequest(int tarefaId, string titulo, string? descricao, DateTime? dataConclusaoPrevista, DateTime? dataConclusaoRealizada, int status)
         {
             TarefaId = tarefaId;
             Titulo = titulo;

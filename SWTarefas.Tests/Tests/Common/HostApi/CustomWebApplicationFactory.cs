@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SWTarefas.Infrastructure.DataAcess;
+using SWTarefas.Infrastructure.DataAcess.EF;
 using SWTarefas.Tests.TestsMoq.Common.Entities;
 
 namespace SWTarefas.Tests.TestsMoq.Common.HostApi

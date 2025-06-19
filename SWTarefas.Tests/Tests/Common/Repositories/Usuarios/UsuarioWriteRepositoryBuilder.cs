@@ -1,6 +1,6 @@
 ﻿using Moq;
 using SWTarefas.Domain.Entities;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Usuarios;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Usuarios;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Usuarios;
 
 namespace SWTarefas.Tests.TestsMoq.Common.Repositories.Usuarios

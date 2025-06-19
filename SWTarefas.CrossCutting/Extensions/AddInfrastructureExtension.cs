@@ -4,14 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using ProjetoSW.Infrastructure.DataAcess.Repository.UnitOfWork;
 using SWTarefas.Application.Cryptography;
-using SWTarefas.Infrastructure.DataAcess;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.UnitOfWork;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Usuarios;
-using SWTarefas.Infrastructure.DataAcess.Repository.Tarefas;
-using SWTarefas.Infrastructure.DataAcess.Repository.Usuarios;
+using SWTarefas.Infrastructure.DataAcess.Dapper;
+using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Tarefas;
+using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.Tarefas;
+using SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.EF;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Usuarios;
+using SWTarefas.Infrastructure.DataAcess.EF.Repository.Tarefas;
+using SWTarefas.Infrastructure.DataAcess.EF.Repository.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.EF.Repository.Usuarios;
 using SWTarefas.Infrastructure.Security.Tokens.Acess;
 using SWTarefas.Infrastructure.Security.Tokens.Acess.Interfaces;
 
@@ -33,6 +38,7 @@ namespace SWTarefas.CrossCutting.Extensions
             services.AddScoped<ICustomEncripter, CustomEncripter>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWorkDapper, UnitOfWorkDapper>();
 
             services.AddScoped<ITarefaWriteRepository, TarefaRepository>();
             services.AddScoped<ITarefaReadRepository, TarefaRepository>();
@@ -40,6 +46,12 @@ namespace SWTarefas.CrossCutting.Extensions
 
             services.AddScoped<IUsuarioReadRepository, UsuarioRepository>();
             services.AddScoped<IUsuarioWriteRepository, UsuarioRepository>();
+
+            services.AddScoped<ITarefaReadDapperRepository, TarefaDapperRepository>();
+            services.AddScoped<ITarefaWriteDapperRepository, TarefaDapperRepository>();
+            services.AddScoped<ITarefaDeleteDapperRepository, TarefaDapperRepository>();            
+
+            services.AddTransient<SWDBConnection>();
 
             return services;
         }
