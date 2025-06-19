@@ -8,9 +8,9 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response
         public int TarefaId { get; init; }
 
         [JsonIgnore]
-        public override DateOnly? DataConclusaoRealizada { get; init; } = null;
+        public override DateTime? DataConclusaoRealizada { get; init; } = null;
 
-        public CreateTarefaResponse(int tarefaId, string titulo, string? descricao, int status, DateOnly? dataConclusaoPrevista)
+        public CreateTarefaResponse(int tarefaId, string titulo, string? descricao, int status, DateTime? dataConclusaoPrevista)
         {
             TarefaId = tarefaId;
             Titulo = titulo;

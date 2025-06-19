@@ -5,6 +5,6 @@ namespace SWTarefas.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [AuthenticatedUser]
+    //[AuthenticatedUser]
     public class TarefasBaseController : ControllerBase { }
 }

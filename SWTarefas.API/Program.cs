@@ -3,7 +3,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 using SWTarefas.API.Filters;
 using SWTarefas.CrossCutting.Extensions;
-using SWTarefas.Infrastructure.DataAcess;
+using SWTarefas.Infrastructure.DataAcess.EF;
 
 const string AUTHENTICATION_TYPE = "Bearer";
 

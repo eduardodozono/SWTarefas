@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.UsuariosUseCases;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Usuarios;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Usuarios;
 using SWTarefas.Resources.Resources;
 using SWTarefas.Tests.TestsMoq.Common.Cryptography;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Usuarios;

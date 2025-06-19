@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using SWTarefas.Application.Exceptions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Delete;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
+using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Delete.EF;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.Repositories.Tarefas;
 

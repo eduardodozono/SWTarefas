@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.Tarefas;
+using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.AutoMapper;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.Repositories.Tarefas;

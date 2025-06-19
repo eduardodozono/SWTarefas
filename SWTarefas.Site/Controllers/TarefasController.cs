@@ -19,7 +19,7 @@ namespace SWTarefas.Site.Controllers
             _writeTarefasUseCaseSite = writeTarefasUseCaseSite;
         }
 
-        public IActionResult Index(int page, int status, string titulo = "", DateOnly? dataPrevista = null, DateOnly? dataRealizada = null
+        public IActionResult Index(int page, int status, string titulo = "", DateTime? dataPrevista = null, DateTime? dataRealizada = null
             , int dataPrevistaOrd = 0, int dataRealizadaOrd = 0)
         {
             var listaTarefas = responseTarefasFilterIndex(status, titulo, dataPrevista, dataRealizada, dataPrevistaOrd, dataRealizadaOrd);
@@ -47,7 +47,7 @@ namespace SWTarefas.Site.Controllers
             return View(listaTarefas.Skip((pageNumber - 1) * pageSize).Take(pageSize));
         }
 
-        private IEnumerable<TarefaViewModel>? responseTarefasFilterIndex(int status, string titulo = "", DateOnly? dataPrevista = null, DateOnly? dataRealizada = null
+        private IEnumerable<TarefaViewModel>? responseTarefasFilterIndex(int status, string titulo = "", DateTime? dataPrevista = null, DateTime? dataRealizada = null
             , int dataPrevistaOrd = 0, int dataRealizadaOrd = 0)
         {
             var listaTarefasModel = _readTarefasUseCaseSite.GetAll(x => (status > 0 ? x.Status == status : true)

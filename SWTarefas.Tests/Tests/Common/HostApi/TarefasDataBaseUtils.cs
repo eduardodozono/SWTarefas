@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SWTarefas.Domain.Entities;
-using SWTarefas.Infrastructure.DataAcess;
+using SWTarefas.Infrastructure.DataAcess.EF;
 
 namespace SWTarefas.Tests.TestsMoq.Common.HostApi
 {

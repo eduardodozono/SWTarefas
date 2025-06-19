@@ -21,11 +21,11 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Data Prevista")]
-        public DateOnly DataConclusaoPrevista { get; set; }
+        public DateTime DataConclusaoPrevista { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayName("Data Realizada")]
-        public DateOnly? DataConclusaoRealizada { get; set; } = null;
+        public DateTime? DataConclusaoRealizada { get; set; } = null;
 
         public int Status { get; set; } = (int)TarefaStatus.Pendente;
     }

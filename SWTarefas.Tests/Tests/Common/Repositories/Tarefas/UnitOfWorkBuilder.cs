@@ -1,5 +1,5 @@
 ﻿using Moq;
-using SWTarefas.Infrastructure.DataAcess.Interfaces.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
 
 namespace SWTarefas.Tests.TestsMoq.Common.Repositories.Tarefas
 {

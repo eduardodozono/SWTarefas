@@ -13,14 +13,14 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas
             var tarefa1 = new Faker<Tarefa>().RuleFor(t => t.TarefaId, 1)
                 .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
                 .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
-                .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
+                .RuleFor(t => t.DataConclusaoPrevista, new DateTime(2025, 1, 1))
                 .RuleFor(t => t.Status, (int)TarefaStatus.Pendente);
 
             var tarefa2 = new Faker<Tarefa>().RuleFor(t => t.TarefaId, 2)
                  .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
                  .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
-                 .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
-                 .RuleFor(t => t.DataConclusaoRealizada, new DateOnly(2025, 1, 1))
+                 .RuleFor(t => t.DataConclusaoPrevista, new DateTime(2025, 1, 1))
+                 .RuleFor(t => t.DataConclusaoRealizada, new DateTime(2025, 1, 1))
                  .RuleFor(t => t.Status, (int)TarefaStatus.Concluída);
 
             listaTarefas.Add(tarefa1);
@@ -36,14 +36,14 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas
             var tarefa1 = new Faker<Tarefa>()
                 .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
                 .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
-                .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
+                .RuleFor(t => t.DataConclusaoPrevista, new DateTime(2025, 1, 1))
                 .RuleFor(t => t.Status, (int)TarefaStatus.Pendente);
 
             var tarefa2 = new Faker<Tarefa>()
                  .RuleFor(t => t.Titulo, (t) => t.Person.FullName)
                  .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(1))
-                 .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
-                 .RuleFor(t => t.DataConclusaoRealizada, new DateOnly(2025, 1, 1))
+                 .RuleFor(t => t.DataConclusaoPrevista, new DateTime(2025, 1, 1))
+                 .RuleFor(t => t.DataConclusaoRealizada, new DateTime(2025, 1, 1))
                  .RuleFor(t => t.Status, (int)TarefaStatus.Concluída);
 
             listaTarefas.Add(tarefa1);
@@ -59,14 +59,14 @@ namespace SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas
             var tarefa1 = new Faker<Tarefa>()
                 .RuleFor(t => t.Titulo, (t) => t.Lorem.Paragraph(paragraphTitulo))
                 .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(paragraphDescricao))
-                .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
+                .RuleFor(t => t.DataConclusaoPrevista, new DateTime(2025, 1, 1))
                 .RuleFor(t => t.Status, (int)TarefaStatus.Pendente);
 
             var tarefa2 = new Faker<Tarefa>()
                  .RuleFor(t => t.Titulo, (t) => t.Lorem.Paragraph(paragraphTitulo))
                  .RuleFor(t => t.Descricao, (t) => t.Lorem.Paragraph(paragraphDescricao))
-                 .RuleFor(t => t.DataConclusaoPrevista, new DateOnly(2025, 1, 1))
-                 .RuleFor(t => t.DataConclusaoRealizada, new DateOnly(2025, 1, 1))
+                 .RuleFor(t => t.DataConclusaoPrevista, new DateTime(2025, 1, 1))
+                 .RuleFor(t => t.DataConclusaoRealizada, new DateTime(2025, 1, 1))
                  .RuleFor(t => t.Status, (int)TarefaStatus.Concluída);
 
             listaTarefas.Add(tarefa1);

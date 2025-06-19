@@ -10,11 +10,11 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request
         public override int Status { get; init; } = (int)TarefaStatus.Pendente;
 
         [JsonIgnore]
-        public override DateOnly? DataConclusaoRealizada { get; init; } = null;
+        public override DateTime? DataConclusaoRealizada { get; init; } = null;
 
         public CreateTarefaRequest() { }
 
-        public CreateTarefaRequest(string titulo, string? descricao, DateOnly? dataConclusaoPrevista)
+        public CreateTarefaRequest(string titulo, string? descricao, DateTime? dataConclusaoPrevista)
         {
             Titulo = titulo;
             Descricao = descricao;
