@@ -1,6 +1,6 @@
 ﻿using SWTarefas.Application.UsesCases.UsuariosUseCases.DTO;
 
-namespace SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces
+namespace SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Read.EF
 {
     public interface ILoginUsuariosUseCase
     {

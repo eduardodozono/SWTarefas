@@ -1,7 +1,7 @@
 ﻿using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.EF
 {
     public interface IFilterTarefasUseCase
     {

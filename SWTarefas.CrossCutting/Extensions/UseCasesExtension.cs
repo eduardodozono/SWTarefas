@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.Dapper;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.Dapper;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write.Dapper;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Delete.Dapper;
@@ -10,8 +11,14 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.Dapper;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write.Dapper;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write.EF;
-using SWTarefas.Application.UsesCases.UsuariosUseCases;
-using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Read.Dapper;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Read.EF;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Write.Dapper;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Write.EF;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Read.Dapper;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Read.EF;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Write.Dapper;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Write.EF;
 
 namespace SWTarefas.CrossCutting.Extensions
 {
@@ -38,6 +45,10 @@ namespace SWTarefas.CrossCutting.Extensions
             services.AddScoped<IGetAllTarefasDapperUseCase, GetAllTarefasDapperUseCase>();
             services.AddScoped<IGetByIdTarefasDapperUseCase, GetByIdTarefasDapperUseCase>();
             services.AddScoped<IFilterTarefasDapperUseCase, FilterTarefasDapperUseCase>();
+
+            // Dapper Usuarios
+            services.AddScoped<ILoginUsuariosDapperUseCase, LoginUsuariosDapperUseCase>();
+            services.AddScoped<ICreateLoginUsuariosDapperUseCase, CreateLoginUsuariosDapperUseCase>();            
 
             return services;
         }

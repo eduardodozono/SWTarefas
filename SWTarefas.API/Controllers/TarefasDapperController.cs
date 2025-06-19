@@ -2,7 +2,7 @@
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.Dapper;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.Dapper;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write.Dapper;
 

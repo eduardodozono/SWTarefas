@@ -1,4 +1,4 @@
-﻿namespace SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete
+﻿namespace SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.EF
 {
     public interface IDeleteTarefasUseCase
     {

@@ -1,5 +1,5 @@
 ﻿using SWTarefas.Application.Exceptions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.EF;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
 using SWTarefas.Resources.Resources;
