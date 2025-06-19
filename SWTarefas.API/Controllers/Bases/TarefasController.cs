@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.EF;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write.EF;
 
-namespace SWTarefas.API.Controllers
+namespace SWTarefas.API.Controllers.Bases
 {
     public class TarefasController : TarefasBaseController
     {

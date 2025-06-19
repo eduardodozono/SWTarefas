@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.NovaPasta;
 using SWTarefas.Domain.DTO.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;

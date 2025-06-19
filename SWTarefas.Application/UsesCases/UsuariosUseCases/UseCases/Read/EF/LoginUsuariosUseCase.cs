@@ -1,13 +1,13 @@
 ﻿using SWTarefas.Application.Cryptography;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.DTO;
-using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces;
-using SWTarefas.Application.UsesCases.UsuariosUseCases.Validations;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Read.EF;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Read.ValidatorBase;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Usuarios;
 using SWTarefas.Infrastructure.Security.Tokens.Acess.Interfaces;
 using SWTarefas.Resources.Resources;
 
-namespace SWTarefas.Application.UsesCases.UsuariosUseCases
+namespace SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Read.EF
 {
     public class LoginUsuariosUseCase : ILoginUsuariosUseCase
     {
@@ -24,7 +24,7 @@ namespace SWTarefas.Application.UsesCases.UsuariosUseCases
 
         public async Task<UsuariosLoginUseCaseResponse?> Execute(UsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
-            await Validate(request, token);
+            await UsuarioLoginValidator.Validate(request, token);
 
             var usuarioDomain = await _usuarioReadRepository.ExistsUsuarioByEmailAndPassword(request.Email, _customEncripter.Encrypt(request.Password), token);
 
@@ -36,16 +36,6 @@ namespace SWTarefas.Application.UsesCases.UsuariosUseCases
             var tokenJwt = _jwtTokenGenerator.Generate(usuarioDomain.UsuarioIdentifier);
 
             return new UsuariosLoginUseCaseResponse(tokenJwt);
-        }
-
-        public async Task Validate(UsuariosLoginUseCaseRequest request, CancellationToken token = default)
-        {
-            var validation = new UsuarioLoginBaseValidation();
-
-            var resultValidation = await validation.ValidateAsync(request, token);
-
-            if (!resultValidation.IsValid)
-                throw new CustomBadRequestException(resultValidation.Errors.Select(erros => erros.ErrorMessage).ToList());
         }
     }
 }

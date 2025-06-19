@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SWTarefas.Domain.Entities;
-using SWTarefas.Infrastructure.DataAcess.EF;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Usuarios;
 
 namespace SWTarefas.Infrastructure.DataAcess.EF.Repository.Usuarios

@@ -2,19 +2,20 @@
 using SWTarefas.API.Controllers.Bases;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.DTO;
-using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Read.EF;
-using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Write.EF;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Read.Dapper;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Write.Dapper;
 
 namespace SWTarefas.API.Controllers
 {
-    public class UsuariosController : UsuariosControllerBase
+
+    public class UsuariosDapperController : UsuariosControllerBase
     {
         [HttpPost("login")]
         [ProducesResponseType(typeof(UsuariosLoginUseCaseResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(CustomBadRequestException), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(CustomUnauthorizedException), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Login([FromServices] ILoginUsuariosUseCase useCase, [FromBody] UsuariosLoginUseCaseRequest request, CancellationToken token = default)
+        public async Task<IActionResult> Login([FromServices] ILoginUsuariosDapperUseCase useCase, [FromBody] UsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
             var result = await useCase.Execute(request);
 
@@ -26,7 +27,7 @@ namespace SWTarefas.API.Controllers
         [ProducesResponseType(typeof(CustomBadRequestException), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(CustomUnauthorizedException), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromServices] ICreateLoginUsuariosUseCase useCase, [FromBody] CreateUsuariosLoginUseCaseRequest request, CancellationToken token = default)
+        public async Task<IActionResult> Create([FromServices] ICreateLoginUsuariosDapperUseCase useCase, [FromBody] CreateUsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
             var result = await useCase.Execute(request, token);
 

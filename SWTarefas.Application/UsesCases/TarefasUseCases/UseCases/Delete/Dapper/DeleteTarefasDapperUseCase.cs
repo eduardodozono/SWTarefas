@@ -1,5 +1,5 @@
 ﻿using SWTarefas.Application.Exceptions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.Dapper;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.UnitOfWork;
 using SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.UnitOfWork;

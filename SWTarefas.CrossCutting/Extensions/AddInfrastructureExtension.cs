@@ -8,8 +8,10 @@ using SWTarefas.Application.Cryptography;
 using SWTarefas.Infrastructure.DataAcess.Dapper;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Usuarios;
 using SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.UnitOfWork;
+using SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.Usuarios;
 using SWTarefas.Infrastructure.DataAcess.EF;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
@@ -37,8 +39,8 @@ namespace SWTarefas.CrossCutting.Extensions
 
             services.AddScoped<ICustomEncripter, CustomEncripter>();
 
+            // EF
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IUnitOfWorkDapper, UnitOfWorkDapper>();
 
             services.AddScoped<ITarefaWriteRepository, TarefaRepository>();
             services.AddScoped<ITarefaReadRepository, TarefaRepository>();
@@ -47,11 +49,17 @@ namespace SWTarefas.CrossCutting.Extensions
             services.AddScoped<IUsuarioReadRepository, UsuarioRepository>();
             services.AddScoped<IUsuarioWriteRepository, UsuarioRepository>();
 
+            // Dapper
+            services.AddTransient<SWDBConnection>();
+
+            services.AddScoped<IUnitOfWorkDapper, UnitOfWorkDapper>();
+
             services.AddScoped<ITarefaReadDapperRepository, TarefaDapperRepository>();
             services.AddScoped<ITarefaWriteDapperRepository, TarefaDapperRepository>();
-            services.AddScoped<ITarefaDeleteDapperRepository, TarefaDapperRepository>();            
+            services.AddScoped<ITarefaDeleteDapperRepository, TarefaDapperRepository>();
 
-            services.AddTransient<SWDBConnection>();
+            services.AddScoped<IUsuarioDapperReadRepository, UsuarioDapperRepository>();
+            services.AddScoped<IUsuarioDapperWriteRepository, UsuarioDapperRepository>();
 
             return services;
         }

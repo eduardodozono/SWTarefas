@@ -1,15 +1,15 @@
 ﻿using SWTarefas.Application.Cryptography;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.UsuariosUseCases.DTO;
-using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces;
-using SWTarefas.Application.UsesCases.UsuariosUseCases.Validations;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Write.EF;
+using SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Write.ValidatorBase;
 using SWTarefas.Domain.Entities;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Usuarios;
 using SWTarefas.Infrastructure.Security.Tokens.Acess.Interfaces;
 using SWTarefas.Resources.Resources;
 
-namespace SWTarefas.Application.UsesCases.UsuariosUseCases
+namespace SWTarefas.Application.UsesCases.UsuariosUseCases.UseCases.Write.EF
 {
     public class CreateLoginUsuariosUseCase : ICreateLoginUsuariosUseCase
     {
@@ -31,7 +31,12 @@ namespace SWTarefas.Application.UsesCases.UsuariosUseCases
 
         public async Task<CreateUsuariosLoginUseCaseResponse> Execute(CreateUsuariosLoginUseCaseRequest request, CancellationToken token = default)
         {
-            await Validate(request, token);
+            await UsuarioLoginCreateValidator.Validate(request, token);
+
+            var emailExists = await _usuarioReadRepository.ExistsUsuarioByEmail(request.Email);
+
+            if (emailExists)
+                throw new CustomBadRequestException(SWTarefasMessagesExceptions.EmailJaExiste);
 
             var usuarioDomain = new Usuario()
             {
@@ -54,21 +59,6 @@ namespace SWTarefas.Application.UsesCases.UsuariosUseCases
             };
 
             return usuarioResponse;
-        }
-
-        public async Task Validate(CreateUsuariosLoginUseCaseRequest request, CancellationToken token = default)
-        {
-            var validation = new UsuarioLoginBaseValidation();
-
-            var result = await validation.ValidateAsync(request);
-
-            var emailExists = await _usuarioReadRepository.ExistsUsuarioByEmail(request.Email);
-
-            if (emailExists)
-                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, SWTarefasMessagesExceptions.EmailJaExiste));
-
-            if (!result.IsValid)
-                throw new CustomBadRequestException(result.Errors.Select(x => x.ErrorMessage).ToList());
         }
     }
 }
