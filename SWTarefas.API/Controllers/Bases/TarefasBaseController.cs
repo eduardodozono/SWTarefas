@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SWTarefas.API.Attribute;
 
-namespace SWTarefas.API.Controllers
+namespace SWTarefas.API.Controllers.Bases
 {
     [Route("[controller]")]
     [ApiController]
