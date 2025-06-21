@@ -1,10 +1,12 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SWTarefas.Application.Cryptography;
+using SWTarefas.Application.UsesCases.MediatR.DTO.Request;
 using SWTarefas.Infrastructure.DataAcess.Dapper;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.UnitOfWork;
@@ -63,6 +65,13 @@ namespace SWTarefas.CrossCutting.Extensions
 
             return services;
         }
+
+        public static IServiceCollection AddMediatR(this IServiceCollection services)
+        {
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateTarefaCommandRequest).GetTypeInfo().Assembly));
+
+            return services;
+        }       
 
         public static IServiceCollection AddJWTExtension(this IServiceCollection services, IConfiguration configuration)
         {

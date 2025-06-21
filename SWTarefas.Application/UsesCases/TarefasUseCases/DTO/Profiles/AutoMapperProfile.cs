@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using SWTarefas.Application.UsesCases.MediatR.DTO.Request;
+using SWTarefas.Application.UsesCases.MediatR.DTO.Response;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 using SWTarefas.Application.UsesCases.TarefasUseCasesSite.ViewModel;
@@ -34,6 +36,12 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Profiles
 
             CreateMap<FilterTarefa, FilterTarefaRequest>();
             CreateMap<FilterTarefaRequest, FilterTarefa>();
+
+            CreateMap<Tarefa, CreateTarefaCommandRequest>();
+            CreateMap<CreateTarefaCommandRequest, Tarefa>();
+
+            CreateMap<Tarefa, CreateTarefaMResponse>();
+            CreateMap<CreateTarefaMResponse, Tarefa>();            
         }
     }
 }

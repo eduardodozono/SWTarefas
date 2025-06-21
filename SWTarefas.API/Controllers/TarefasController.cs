@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SWTarefas.API.Controllers.Bases;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
@@ -7,7 +7,7 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Delete.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.EF;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write.EF;
 
-namespace SWTarefas.API.Controllers.Bases
+namespace SWTarefas.API.Controllers
 {
     public class TarefasController : TarefasBaseController
     {

@@ -55,6 +55,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddHealthChecks().AddDbContextCheck<SWTarefasContext>();
 builder.Services.AddHostedService<TarefasDeleteVencidosWorker>();
 builder.Services.AddSignalR();
+builder.Services.AddMediatR();
 
 var app = builder.Build();
 
