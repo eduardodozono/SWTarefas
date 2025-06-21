@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Linq.Expressions;
+using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using SWTarefas.Domain.DTO.Tarefas;
 using SWTarefas.Domain.Entities;
@@ -47,7 +48,7 @@ namespace SWTarefas.Infrastructure.DataAcess.EF.Repository.Tarefas
         public IEnumerable<Tarefa>? GetAll(Expression<Func<Tarefa, bool>> filter)
         {
             var listaTarefas = _sWTarefasContext.Tarefas.AsNoTracking().Where(filter).OrderByDescending(t => t.Status).ToList();
-                       
+
             return listaTarefas;
         }
 
@@ -60,7 +61,7 @@ namespace SWTarefas.Infrastructure.DataAcess.EF.Repository.Tarefas
 
         public async Task<IEnumerable<Tarefa>?> Filter(FilterTarefa filter, CancellationToken token = default)
         {
-            var queryFilter = _sWTarefasContext.Tarefas.Where(f => f.TarefaId > 0);
+            var queryFilter = _sWTarefasContext.Tarefas.AsNoTracking().Where(f => f.TarefaId > 0);
 
             if (filter.TarefaId > 0)
                 queryFilter = queryFilter.Where(f => f.TarefaId.Equals(filter.TarefaId));
@@ -79,6 +80,11 @@ namespace SWTarefas.Infrastructure.DataAcess.EF.Repository.Tarefas
 
             if (filter.DataConclusaoRealizada != null)
                 queryFilter = queryFilter.Where(f => f.DataConclusaoRealizada.Equals(filter.DataConclusaoRealizada));
+
+            if (filter.DataConclusaoPrevistaInferior != null)
+            {
+                queryFilter = queryFilter.Where(f => (f.DataConclusaoPrevista <= filter.DataConclusaoPrevistaInferior) && (!f.DataConclusaoRealizada.HasValue));
+            }
 
             return await queryFilter.ToListAsync(token);
         }

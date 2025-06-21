@@ -7,7 +7,6 @@ using SWTarefas.Application.UsesCases.UsuariosUseCases.Interfaces.Write.Dapper;
 
 namespace SWTarefas.API.Controllers
 {
-
     public class UsuariosDapperController : UsuariosControllerBase
     {
         [HttpPost("login")]

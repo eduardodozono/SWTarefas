@@ -4,6 +4,8 @@ using Microsoft.OpenApi.Models;
 using SWTarefas.API.Filters;
 using SWTarefas.CrossCutting.Extensions;
 using SWTarefas.Infrastructure.DataAcess.EF;
+using SWTarefas.SignalR.Hubs.Tarefas;
+using SWTarefas.Workers.Workers.Tarefas;
 
 const string AUTHENTICATION_TYPE = "Bearer";
 
@@ -51,8 +53,12 @@ builder.Services.AddUseCasesExtension();
 builder.Services.AddMvc(options => options.Filters.Add(typeof(CustomFilterException)));
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddHealthChecks().AddDbContextCheck<SWTarefasContext>();
+builder.Services.AddHostedService<TarefasDeleteVencidosWorker>();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
+
+app.MapHub<TarefaHub>("/tarefasSR");
 
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
