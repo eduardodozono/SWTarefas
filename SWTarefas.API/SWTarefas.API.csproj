@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SWTarefas.CrossCutting\SWTarefas.CrossCutting.csproj" />
+    <ProjectReference Include="..\SWTarefas.SignalR\SWTarefas.SignalR.csproj" />
+    <ProjectReference Include="..\SWTarefas.Workers\SWTarefas.Workers.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

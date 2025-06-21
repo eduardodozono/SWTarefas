@@ -74,6 +74,7 @@ namespace SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.Tarefas
 
             sql.Clear();
             sql.AppendLine("SELECT TarefaId, Titulo, Descricao, Status");
+            sql.AppendLine(", DataConclusaoPrevista, DataConclusaoRealizada");
             sql.AppendLine("FROM Tarefa");
             sql.AppendLine("WHERE 0 = 0");
             if (request.TarefaId > 0)
@@ -92,9 +93,21 @@ namespace SWTarefas.Infrastructure.DataAcess.Dapper.RepositoryDapper.Tarefas
             {
                 sql.AppendLine("AND Status = @Status");
             }
+            if (request.DataConclusaoPrevistaInferior != null)
+            {
+                sql.AppendLine("AND (DataConclusaoPrevista <= @DataConclusaoPrevistaInferior");
+                sql.AppendLine("AND DataConclusaoRealizada IS NULL)");
+            }
             sql.AppendLine("ORDER BY DataConclusaoPrevista DESC");
 
-            var listaTarefas = await connection.QueryAsync<Tarefa>(sql.ToString(), new { request.TarefaId, request.Titulo, request.Descricao, request.Status }, _sWDBConnection.Transaction);
+            var listaTarefas = await connection.QueryAsync<Tarefa>(sql.ToString(), new
+            {
+                request.TarefaId,
+                request.Titulo,
+                request.Descricao,
+                request.Status,
+                request.DataConclusaoPrevistaInferior
+            }, _sWDBConnection.Transaction);
 
             return listaTarefas;
         }
