@@ -9,35 +9,42 @@ using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
 using SWTarefas.Resources.Resources;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write.EF
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write.EF.Update
 {
-    public class CreateTarefaUseCase : ICreateTarefaUseCase
+    public class UpdateTarefasUseCase : IUpdateTarefasUseCase
     {
         private readonly ITarefaWriteRepository _tarefaWriteRepository;
+        private readonly ITarefaReadRepository _tarefaReadRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateTarefaUseCase(ITarefaWriteRepository tarefaWriteRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public UpdateTarefasUseCase(ITarefaWriteRepository tarefaWriteRepository, ITarefaReadRepository tarefaReadRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _tarefaWriteRepository = tarefaWriteRepository;
+            _tarefaReadRepository = tarefaReadRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<CreateTarefaResponse> Execute(CreateTarefaRequest tarefa, CancellationToken token = default)
+        public async Task<UpdateTarefaResponse> Execute(UpdateTarefaRequest tarefa, CancellationToken token = default)
         {
             var tarefaDomain = _mapper.Map<Tarefa>(tarefa);
 
             if (tarefaDomain == null)
                 throw new CustomBadRequestException(SWTarefasMessagesExceptions.ProblemaConverterTarefa);
 
-            await ValidatorBaseCreate.Validate(tarefa, token);
+            var tarefaExisteDB = _tarefaReadRepository.GetById(tarefa.TarefaId);
 
-            await _tarefaWriteRepository.Create(tarefaDomain, token);
+            if (tarefaExisteDB == null)
+                throw new CustomBadRequestException(SWTarefasMessagesExceptions.TarefaNaoExiste);
+
+            await ValidatorBaseUpdate.Validate(tarefa, token);
+
+            _tarefaWriteRepository.Update(tarefaDomain);
 
             await _unitOfWork.Commit(token);
 
-            return _mapper.Map<CreateTarefaResponse>(tarefaDomain);
+            return _mapper.Map<UpdateTarefaResponse>(tarefaDomain);
         }
     }
 }

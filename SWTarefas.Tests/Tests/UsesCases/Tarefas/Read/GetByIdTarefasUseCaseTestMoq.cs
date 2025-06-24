@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF;
+using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF.GetById;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 using SWTarefas.Tests.TestsMoq.Common.AutoMapper;
 using SWTarefas.Tests.TestsMoq.Common.Entities.Tarefas;

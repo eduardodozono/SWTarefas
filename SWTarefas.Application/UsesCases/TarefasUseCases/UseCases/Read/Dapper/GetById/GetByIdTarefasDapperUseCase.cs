@@ -3,7 +3,7 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.Dapper;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Tarefas;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.Dapper
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.Dapper.GetById
 {
     public class GetByIdTarefasDapperUseCase : IGetByIdTarefasDapperUseCase
     {

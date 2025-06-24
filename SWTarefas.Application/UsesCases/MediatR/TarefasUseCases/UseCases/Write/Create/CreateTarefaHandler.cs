@@ -9,7 +9,7 @@ using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.UnitOfWork;
 using SWTarefas.Resources.Resources;
 
-namespace SWTarefas.Application.UsesCases.MediatR.TarefasUseCases.UseCases.Write
+namespace SWTarefas.Application.UsesCases.MediatR.TarefasUseCases.UseCases.Write.Create
 {
     public class CreateTarefaHandler : IRequestHandler<CreateTarefaCommandRequest, CreateTarefaMResponse>
     {
