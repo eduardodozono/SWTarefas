@@ -41,7 +41,10 @@ namespace SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Profiles
             CreateMap<CreateTarefaCommandRequest, Tarefa>();
 
             CreateMap<Tarefa, CreateTarefaMResponse>();
-            CreateMap<CreateTarefaMResponse, Tarefa>();            
+            CreateMap<CreateTarefaMResponse, Tarefa>();
+
+            CreateMap<Tarefa, UpdateTarefaCommandRequest>();
+            CreateMap<UpdateTarefaCommandRequest, Tarefa>();
         }
     }
 }

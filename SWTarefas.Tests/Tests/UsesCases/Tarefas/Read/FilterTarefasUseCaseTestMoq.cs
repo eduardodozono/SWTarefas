@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Enums;
-using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF;
+using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF.Filter;
 using SWTarefas.Domain.Entities;
 using SWTarefas.Resources.Resources;
 using SWTarefas.Tests.TestsMoq.Common.AutoMapper;

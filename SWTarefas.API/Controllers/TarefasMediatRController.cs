@@ -4,6 +4,9 @@ using SWTarefas.API.Controllers.Bases;
 using SWTarefas.Application.Exceptions;
 using SWTarefas.Application.UsesCases.MediatR.DTO.Request;
 using SWTarefas.Application.UsesCases.MediatR.DTO.Response;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Request;
+using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
+using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Write.EF;
 
 namespace SWTarefas.API.Controllers
 {
@@ -40,6 +43,18 @@ namespace SWTarefas.API.Controllers
             await _mediator.Send(request);
 
             return NoContent();
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(UpdateTarefaResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CustomBadRequestException), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Update([FromServices] IUpdateTarefasUseCase useCase, UpdateTarefaRequest request, CancellationToken token = default)
+        {
+            var result = await useCase.Execute(request, token);
+
+            return Ok(result);
         }
     }
 }

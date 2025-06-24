@@ -9,7 +9,7 @@ using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.UnitOfWork;
 using SWTarefas.Resources.Resources;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write.Dapper
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Write.Dapper.Update
 {
     public class UpdateTarefasDapperUseCase: IUpdateTarefasDapperUseCase
     {

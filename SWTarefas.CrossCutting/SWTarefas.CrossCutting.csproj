@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjetoSW.Infrastructure\SWTarefas.Infrastructure.csproj" />
     <ProjectReference Include="..\SWTarefas.Application\SWTarefas.Application.csproj" />
+    <ProjectReference Include="..\SWTarefas.Jobs\SWTarefas.Jobs.csproj" />
   </ItemGroup>
 
 </Project>

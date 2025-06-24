@@ -6,7 +6,7 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.NovaPasta;
 using SWTarefas.Domain.DTO.Tarefas;
 using SWTarefas.Infrastructure.DataAcess.Dapper.Interfaces.Tarefas;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.Dapper
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.Dapper.Filter
 {
     public class FilterTarefasDapperUseCase : IFilterTarefasDapperUseCase
     {

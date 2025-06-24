@@ -54,6 +54,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(CustomFilterExcept
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddHealthChecks().AddDbContextCheck<SWTarefasContext>();
 builder.Services.AddHostedService<TarefasDeleteVencidosWorker>();
+builder.Services.AddHangFireExtension(builder.Configuration);
 builder.Services.AddSignalR();
 builder.Services.AddMediatR();
 

@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWTarefas.SignalR", "SWTare
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWTarefas.SignalRClient", "SWTarefas.SignalRClient\SWTarefas.SignalRClient.csproj", "{BD37293C-FAA9-46B9-BA43-6AC79A556168}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWTarefas.Jobs", "SWTarefas.Jobs\SWTarefas.Jobs.csproj", "{5D655934-6228-42C2-B385-F92858700F70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{BD37293C-FAA9-46B9-BA43-6AC79A556168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD37293C-FAA9-46B9-BA43-6AC79A556168}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD37293C-FAA9-46B9-BA43-6AC79A556168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D655934-6228-42C2-B385-F92858700F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D655934-6228-42C2-B385-F92858700F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D655934-6228-42C2-B385-F92858700F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D655934-6228-42C2-B385-F92858700F70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

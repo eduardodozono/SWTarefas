@@ -3,7 +3,7 @@ using SWTarefas.Application.UsesCases.TarefasUseCases.DTO.Response;
 using SWTarefas.Application.UsesCases.TarefasUseCases.Interfaces.Read.EF;
 using SWTarefas.Infrastructure.DataAcess.EF.Interfaces.Tarefas;
 
-namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF
+namespace SWTarefas.Application.UsesCases.TarefasUseCases.UseCases.Read.EF.GetById
 {
     public class GetByIdTarefasUseCase : IGetByIdTarefasUseCase
     {

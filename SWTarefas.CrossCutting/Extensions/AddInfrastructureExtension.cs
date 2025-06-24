@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Text;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -71,7 +72,26 @@ namespace SWTarefas.CrossCutting.Extensions
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateTarefaCommandRequest).GetTypeInfo().Assembly));
 
             return services;
-        }       
+        }
+
+        public static IServiceCollection AddHangFireExtension(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHangfire(config =>
+            {
+                config.UseSqlServerStorage(configuration.GetConnectionString("HangFireConnection"));
+
+            });
+
+            GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute
+            {
+                Attempts = 5,
+                DelaysInSeconds = new int[] { 300 }
+            });
+
+            services.AddHangfireServer();
+
+            return services;
+        }
 
         public static IServiceCollection AddJWTExtension(this IServiceCollection services, IConfiguration configuration)
         {

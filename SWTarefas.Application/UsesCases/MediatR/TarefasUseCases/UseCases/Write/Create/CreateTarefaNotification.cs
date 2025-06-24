@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SWTarefas.Domain.Entities;
 
-namespace SWTarefas.Application.UsesCases.MediatR.TarefasUseCases.UseCases.Write
+namespace SWTarefas.Application.UsesCases.MediatR.TarefasUseCases.UseCases.Write.Create
 {
     public class CreateTarefaNotification : INotification
     {

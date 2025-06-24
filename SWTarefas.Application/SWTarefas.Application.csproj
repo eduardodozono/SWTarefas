@@ -14,6 +14,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ProjetoSW.Infrastructure\SWTarefas.Infrastructure.csproj" />
+		<ProjectReference Include="..\SWTarefas.Jobs\SWTarefas.Jobs.csproj" />
 		<ProjectReference Include="..\SWTarefas.Resources\SWTarefas.Resources.csproj" />
 	</ItemGroup>
 
